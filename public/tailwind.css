@@ -1,0 +1,76 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer {
+  * {
+    transition: all;
+    transition-duration: 200ms;
+  }
+
+  *:hover {
+    transition: all;
+    transition-duration: 200ms;
+  }
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/Roboto-Regular.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: url('fonts/Roboto-Bold.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  src: url('fonts/Roboto-Black.woff2') format('woff2');
+  font-display: swap;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  cursor: pointer;
+  background: #edf2f7;
+}
+
+.dark > ::-webkit-scrollbar-track {
+  background: #262632;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #fdb13c;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #fdcb7d;
+}
+
+.thin-scrollbar::-webkit-scrollbar {
+  width: 7px;
+  height: 16px;
+}
+
+/* Mozilla scrollbar */
+* {
+  scrollbar-color: #fdb13c #edf2f7;
+  scrollbar-width: 16px;
+}

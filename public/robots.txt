@@ -1,0 +1,7 @@
+User-agent: *
+Crawl-delay: 1
+Host: https://za-halyavoi.ru/
+Disallow: /*?*
+Disallow: /search
+Disallow: /404
+Sitemap: https://za-halyavoi.ru/sitemap.xml
