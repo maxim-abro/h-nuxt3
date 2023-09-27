@@ -183,7 +183,7 @@ watch(() => pagination.value.current_page, async (query: string | number | Locat
       page: pagination.value.current_page.toString()
     }
   })
-  const postRes = await $fetch<ResponsePosts>(`/post?page=${query}`)
+  const postRes = await $fetch<ResponsePosts>(`https://za-halyavoi.ru/api/post?page=${query}`)
   posts.value = postRes.rows
   // this.$refs.hot.scrollIntoView({ block: 'start', behavior: 'smooth' })
 })
@@ -191,6 +191,6 @@ watch(() => pagination.value.current_page, async (query: string | number | Locat
 
 // todo realisation likes with cookie
 async function likePost(uin:string) {
-  await $fetch(`/post/like/${uin}`)
+  await $fetch(`https://za-halyavoi.ru/api/post/like/${uin}`)
 }
 </script>

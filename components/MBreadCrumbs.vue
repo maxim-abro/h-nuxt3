@@ -33,8 +33,11 @@
 </template>
 
 <script setup lang="ts">
+import {Crumb} from "~/types/components/BreadcrumbsType";
 
-import {BreadcrumbsType} from "~/types/components/BreadcrumbsType";
+interface BreadcrumbsType {
+  crumbs: Crumb[]
+}
 
 const props = defineProps<BreadcrumbsType>()
 
