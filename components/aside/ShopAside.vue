@@ -15,7 +15,7 @@
         target="_blank"
         class="w-full rounded border bg-white inline-block text-lg text-center dark:bg-zinc-800 dark:hover:bg-primary border-primary text-primary py-1.5 hover:bg-primary hover:text-white transition-all duration-300 hover:transition-all hover:duration-300"
     >
-      <fa icon="up-right-from-square" />
+      <nuxt-icon name="up-right-from-square" />
       Перейти на сайт
     </a>
 
@@ -23,7 +23,7 @@
         class="text-center rounded w-full mt-3 py-1.5 bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-200 text-second dark:hover:text-primary hover:text-primary transition-all duration-300 hover:transition-all hover:duration-300"
         @click="$router.push(`/shop/add/${data.lat_title}`)"
     >
-      <fa icon="circle-chevron-down" />
+      <nuxt-icon name="circle-chevron-down" />
       Предложить купон
     </button>
 
@@ -38,7 +38,7 @@
         class="text-sm hover:text-primary duration-300 hover:transition-all hover:duration-300"
         @click="openInfo = !openInfo"
     >
-      <fa icon="circle-info" class="text-primary" />
+      <nuxt-icon name="circle-info" class="text-primary" />
       Информация о магазине "{{ data.title }}"
     </button>
 

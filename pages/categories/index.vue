@@ -2,7 +2,7 @@
   <div class="">
     <m-bread-crumbs :crumbs="breadCrumbs" />
     <h1 class="text-2xl lg:text-3xl font-bold mb-4">
-      <fa icon="braille" class="text-primary mr-1" /> Все предложения по скидкам
+      <nuxt-icon name="braille" class="text-primary mr-1" /> Все предложения по скидкам
     </h1>
     <h2 class="text-xl lg:text-2xl font-bold mb-3">
       Найдите интересующий вас сайт по категории:
@@ -15,7 +15,7 @@
           :to="`/categories/${category.lat_title}`"
           class="w-full pl-1 text-xl font-light py-1 hover:bg-zinc-700 hover:text-primary duration-75 whitespace-nowrap overflow-ellipsis overflow-hidden"
       >
-        <fa :icon="category.icon" class="mr-3 w-4" />{{ category.title }}
+        <nuxt-icon :name="`category/${category.icon}`" class="mr-3 w-4" />{{ category.title }}
       </nuxt-link>
     </div>
   </div>

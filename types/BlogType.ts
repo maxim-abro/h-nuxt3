@@ -4,6 +4,7 @@ export interface BlogTagsType {
 }
 
 export interface BlogType {
+  id: string
   title: string
   description: string
   lat_title: string

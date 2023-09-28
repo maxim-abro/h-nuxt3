@@ -15,7 +15,7 @@
     <p class="mb-8" v-html="holiday.description"></p>
 
     <h2 class="font-bold text-lg mb-4">
-      <fa icon="fire" class="text-primary" /> {{ holiday.title }} - лучшие
+      <nuxt-icon name="fire" class="text-primary" /> {{ holiday.title }} - лучшие
       промокоды и акции
     </h2>
 

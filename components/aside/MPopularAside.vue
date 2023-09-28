@@ -5,7 +5,7 @@
     <div
         class="p-4 text-second font-bold text-center bg-zinc-100 dark:bg-zinc-800 dark:text-zinc-200"
     >
-<!--      <fa icon="crown" class="text-primary mr-2" />-->
+      <nuxt-icon name="crown" class="text-primary mr-2" />
       Популярные предложения
     </div>
 

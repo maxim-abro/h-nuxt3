@@ -12,9 +12,9 @@
 
     <div class="mx-auto text-xl w-max px-3 bg-zinc-100 dark:bg-zinc-800 mb-3">
       <button class="group p-0.5">
-        <fa
+        <nuxt-icon
           class="group-hover:text-primary transition-all duration-300 hover:transition-all hover:duration-300"
-          icon="heart"
+          name="heart"
           @click="$emit('like', post.uin)"
         />
       </button>
@@ -33,7 +33,7 @@
       :to="`/shop/${post.shop.lat_title}`"
       class="text-sm block mb-3 text-zinc-400 hover:text-primary transition-all duration-300 hover:transition-all hover:duration-300"
     >
-      <fa icon="check" class="text-primary" /> Все промокоды
+      <nuxt-icon name="check" class="text-primary" /> Все промокоды
       {{ post.shop.title }}
     </router-link>
 

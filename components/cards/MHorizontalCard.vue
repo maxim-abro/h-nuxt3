@@ -19,9 +19,9 @@
             class="mx-auto text-xl w-max px-3 bg-zinc-100 dark:bg-zinc-800 mt-3 dark:text-zinc-200"
         >
           <button class="group p-0.5" @click="$emit('like', post.uin)">
-            <fa
+            <nuxt-icon
                 class="group-hover:text-primary transition-all duration-300 hover:transition-all hover:duration-300"
-                icon="heart"
+                name="heart"
             />
           </button>
 
@@ -39,7 +39,7 @@
         <button
             class="text-zinc-400 mx-auto hover:text-primary transition-all duration-300 hover:transition-all hover:duration-300"
         >
-          <fa icon="share-alt" class="text-primary text-base" /> Поделиться
+          <nuxt-icon name="share-nodes" class="text-primary text-base" /> Поделиться
         </button>
       </div>
     </div>

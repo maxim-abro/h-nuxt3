@@ -44,10 +44,10 @@
         </div>
 
         <button
-            class="self-start text-3xl px-2 hover:text-red-700 hover:bg-zinc-200 flex justify-center absolute right-4 top-4 items-center transition-all duration-300"
+            class="self-start text-3xl px-2 hover:text-red-700 hover:bg-zinc-200 flex justify-center absolute right-4 top-4 items-center transition-all duration-300 dark:hover:bg-zinc-700"
             @click="popup.closePopup()"
         >
-          <fa icon="xmark" />
+          <nuxt-icon name="xmark" />
         </button>
       </div>
       <!-------------Топ-конец----------------------->
@@ -93,7 +93,7 @@
                 leave-class="opacity-100 translate-y-0"
                 leave-to-class="opacity-0 -translate-y-full"
             >
-              <fa v-if="!copied" icon="clone" />
+              <nuxt-icon v-if="!copied" name="clone" />
             </transition>
 
             <transition
@@ -104,7 +104,7 @@
                 leave-class="opacity-100 translate-y-0"
                 leave-to-class="opacity-0 -translate-y-full"
             >
-              <fa v-if="copied" icon="check" />
+              <nuxt-icon v-if="copied" name="check" />
             </transition>
           </button>
         </div>
@@ -119,7 +119,7 @@
             target="_blank"
             class="w-full sm:w-1/2 text-center bg-primary text-second font-medium block mx-auto py-3 hover:shadow hover:shadow-xl transition-all duration-300 mb-5"
         >
-          <fa icon="check" class="mr-2" />
+          <nuxt-icon name="check" class="mr-2" />
           {{
             popup.popupData.type === 'promoCode'
                 ? 'Использовать код'
@@ -130,7 +130,7 @@
         <div
             class="text-zinc-700 dark:text-zinc-200 mx-auto w-max flex items-center cursor-pointer"
         >
-          <fa icon="share" class="text-primary mr-2" />
+          <nuxt-icon name="share-nodes" class="text-primary mr-2" />
           <span class="text-xs">Поделиться</span>
         </div>
       </div>
@@ -155,5 +155,9 @@ const copied: Ref<UnwrapRef<boolean>> = ref(false)
 
 function copyBuffer():void {
   navigator.clipboard.writeText(popup.popupData.code)
+  copied.value = true
+  setTimeout(() => {
+    copied.value = false
+  }, 3000)
 }
 </script>

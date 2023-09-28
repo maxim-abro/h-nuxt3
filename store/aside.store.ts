@@ -36,7 +36,6 @@ export const useAsideStore = defineStore({
     },
     async getBuild(): Promise<void> {
       const resData = await axios.get('https://za-halyavoi.ru/api/build/site')
-      console.log(resData.data)
       this.setPopular(resData.data.shops)
       this.setPopularCategories(resData.data.categories)
     }

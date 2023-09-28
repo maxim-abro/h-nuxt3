@@ -57,8 +57,8 @@ import {useSeoStore} from "~/store/seo.store"
 const route = useRoute()
 const seo = useSeoStore()
 
-const response = await $fetch<BlogType>('https://za-halyavoi.ru/api/blog/all')
-const blogs: Ref<UnwrapRef<BlogType>> = ref(response)
+const response = await $fetch<BlogType[]>('https://za-halyavoi.ru/api/blog/all')
+const blogs: Ref<UnwrapRef<BlogType[]>> = ref(response)
 
 const breadCrumbs:Ref<UnwrapRef<Crumb[]>> = ref([
   {

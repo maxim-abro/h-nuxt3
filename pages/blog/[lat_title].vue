@@ -21,9 +21,9 @@
 
       <div class="flex items-center">
         <button class="mr-4" @click="likeBlog(blog.lat_title)">
-          <fa icon="heart" class="mr-2 hover:text-primary" />{{ blog.likes }}
+          <nuxt-icon name="heart" class="mr-2 hover:text-primary" />{{ blog.likes }}
         </button>
-        <div><fa icon="eye" class="mr-2" />{{ blog.counter }}</div>
+        <div><nuxt-icon name="eye" class="mr-2" />{{ blog.counter }}</div>
       </div>
     </div>
     <img

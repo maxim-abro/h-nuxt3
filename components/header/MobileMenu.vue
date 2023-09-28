@@ -7,15 +7,15 @@
       <ul>
         <li>
           <nuxt-link to="/" class="mb-2 block" @click.prevent="clickLink('/')"
-          ><fa class="text-primary mr-1" icon="house" /> Главная</nuxt-link
+          ><nuxt-icon class="text-primary mr-1" name="house" /> Главная</nuxt-link
           >
         </li>
         <li>
           <m-collapse animation>
             <template #trigger>
               <div class="mb-2 block">
-                <fa class="text-primary mr-1" icon="braille" /> Категории
-                <fa icon="chevron-up" class="arrow" />
+                <nuxt-icon class="text-primary mr-1" name="braille" /> Категории
+                <nuxt-icon name="chevron-up" class="arrow" />
               </div>
             </template>
             <template #content>
@@ -28,14 +28,14 @@
                     @click.prevent="
                     clickLink(`/categories/${category.lat_title}`)
                   "
-                ><fa :icon="category.icon" class="text-second mr-1" />
+                ><nuxt-icon :name="`category/${category.icon}`" class="text-second mr-1" />
                   {{ category.title }}</a
                 >
                 <a
                     href="/categories"
                     class="ml-4 block my-1"
                     @click.prevent="clickLink('/categories')"
-                ><fa class="text-second mr-1" icon="ellipsis-h" /> Все
+                ><nuxt-icon class="text-second mr-1" name="ellipsis" /> Все
                   категории</a
                 >
               </div>
@@ -44,7 +44,7 @@
         </li>
         <li>
           <a href="/blog" class="mb-2 block">
-            <fa icon="newspaper" class="text-primary" />
+            <nuxt-icon name="newspaper" class="text-primary" />
             Блог
           </a>
         </li>
@@ -53,7 +53,7 @@
               href="/alphabet"
               class="mb-2 block"
               @click.prevent="clickLink('/alphabet')"
-          ><fa class="text-primary mr-1" icon="arrow-down-a-z" /> Сайты по
+          ><nuxt-icon class="text-primary mr-1" name="arrow-down-a-z" /> Сайты по
             алфавиту</a
           >
         </li>
@@ -61,8 +61,8 @@
           <m-collapse animation>
             <template #trigger>
               <div class="mb-2 block">
-                <fa icon="crown" class="text-primary mr-1" />Популярные
-                приложения <fa icon="chevron-up" class="arrow" />
+                <nuxt-icon name="crown" class="text-primary mr-1" />Популярные
+                приложения <nuxt-icon name="chevron-up" class="arrow" />
               </div>
             </template>
             <template #content>
@@ -87,16 +87,16 @@
         </li>
         <li>
           <button class="" @click="changeColorMode">
-<!--            <fa-->
-<!--                v-if="$colorMode.preference === 'dark'"-->
-<!--                icon="moon"-->
-<!--                class="text-primary mr-1"-->
-<!--            />-->
-<!--            <fa-->
-<!--                v-if="$colorMode.preference === 'light'"-->
-<!--                icon="sun"-->
-<!--                class="text-primary mr-1"-->
-<!--            />-->
+            <nuxt-icon
+                v-if="$colorMode.preference === 'dark'"
+                name="moon"
+                class="text-primary mr-1"
+            />
+            <nuxt-icon
+                v-if="$colorMode.preference === 'light'"
+                name="sun"
+                class="text-primary mr-1"
+            />
             цветовая схема
           </button>
         </li>

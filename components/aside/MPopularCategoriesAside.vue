@@ -5,7 +5,7 @@
     <div
         class="p-4 text-second font-bold text-center bg-zinc-100 dark:bg-zinc-800 dark:text-zinc-200"
     >
-      <fa icon="star" class="text-primary mr-2" />
+      <nuxt-icon name="star" class="text-primary mr-2" />
       Популярные Категории
     </div>
 
@@ -16,8 +16,8 @@
           :to="`/categories/${i.lat_title}`"
           class="cursor-pointer mb-2 py-1 group decoration-primary hover:underline hover:underline-offset-2 flex items-center"
       >
-        <fa
-            :icon="i.icon"
+        <nuxt-icon
+            :name="`category/${i.icon}`"
             class="text-primary mr-3 group-hover:rotate-[360deg]"
         />
         {{ i.title }}

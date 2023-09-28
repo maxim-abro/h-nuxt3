@@ -92,7 +92,16 @@ export default defineNuxtConfig({
     // '@nuxtjs/eslint-module',
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
+    'nuxt-simple-sitemap',
+    '@nuxtjs/color-mode',
+    'nuxt-icons',
   ],
+
+  colorMode: {
+    preference: 'light',
+    fallback: 'light',
+    classSuffix: '',
+  },
 
   sitemap: {
     urls: async () => {

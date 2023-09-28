@@ -18,13 +18,13 @@
             class="w-full pl-1 text-xl font-light py-1 hover:bg-zinc-700 hover:text-primary duration-75 whitespace-nowrap overflow-ellipsis overflow-hidden"
             :href="`/categories/${cat.lat_title}`"
             @click.prevent="clickCat(`/categories/${cat.lat_title}`)"
-        ><fa :icon="cat.icon" class="mr-3 w-4" />{{ cat.title }}</a
+        ><nuxt-icon :name="`category/${cat.icon}`" class="mr-3 w-4" />{{ cat.title }}</a
         >
         <a
             class="w-full pl-1 text-xl font-light py-1 hover:bg-zinc-700 hover:text-primary duration-75 whitespace-nowrap overflow-ellipsis overflow-hidden"
             href="/categories"
             @click.prevent="clickCat('/categories')"
-        ><fa icon="ellipsis-h" /> Все категории</a
+        ><nuxt-icon name="ellipsis" /> Все категории</a
         >
       </div>
     </div>

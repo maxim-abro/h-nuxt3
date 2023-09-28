@@ -4,7 +4,7 @@
       :crumbs="breadCrumbs"
     />
     <h1 class="text-lg xl:text-3xl font-bold my-8">
-      <fa icon="magnifying-glass" class="text-primary"/>
+      <nuxt-icon name="magnifying-glass" class="text-primary"/>
       Результаты поиска по запросу: "{{ dataq }}"
     </h1>
 

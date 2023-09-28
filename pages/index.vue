@@ -1,7 +1,7 @@
 <template>
   <div class="dark:bg-zinc-900">
     <h1 ref="hot" class="text-2xl font-bold mb-8">
-      <fa icon="fire" class="text-primary" />
+      <nuxt-icon name="fire" class="text-primary" />
       Горячие скидки
     </h1>
 

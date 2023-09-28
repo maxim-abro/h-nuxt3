@@ -8,7 +8,7 @@
             class="text-primary bg-zinc-100 dark:bg-zinc-800 w-10 h-10 block md:hidden"
             @click="popup.toggleMenu"
         >
-          <fa icon="bars" />
+          <nuxt-icon name="header/bars" />
         </button>
         <nuxt-link
             to="/"
@@ -26,7 +26,7 @@
             class="text-primary bg-zinc-100 dark:bg-zinc-800 w-10 h-10 block md:hidden"
             @click="openSearchMobile = !openSearchMobile"
         >
-          <fa icon="magnifying-glass" />
+          <nuxt-icon name="header/magnifying-glass" />
         </button>
         <div class="w-5/12 hidden md:flex items-center justify-end">
           <form class="relative w-9/12" @submit.prevent="submitSearch">
@@ -41,7 +41,7 @@
                 type="submit"
                 class="absolute right-0 top-0 h-full px-3 bg-primary hover:bg-yellow-500 transition-all duration-300 hover:transition-all hover:duration-300"
             >
-              <fa icon="magnifying-glass" />
+              <nuxt-icon name="header/magnifying-glass" />
             </m-button>
             <m-header-search v-if="searchShops.length" :shops="searchShops" />
           </form>
@@ -49,16 +49,16 @@
               class="h-8 ml-4 w-8 rounded sm:block bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 block dark:hover:bg-zinc-700"
               @click="changeColorMode"
           >
-<!--            <fa-->
-<!--                v-if="$colorMode.preference === 'dark'"-->
-<!--                icon="moon"-->
-<!--                class="text-primary"-->
-<!--            />-->
-<!--            <fa-->
-<!--                v-if="$colorMode.preference === 'light'"-->
-<!--                icon="sun"-->
-<!--                class="text-primary"-->
-<!--            />-->
+            <nuxt-icon
+                v-if="colorMode.preference === 'dark'"
+                name="moon"
+                class="text-primary"
+            />
+            <nuxt-icon
+                v-if="colorMode.preference === 'light'"
+                name="sun"
+                class="text-primary"
+            />
           </button>
         </div>
       </div>
@@ -81,7 +81,7 @@
                 class="p-3 inline-block bg-second dark:bg-zinc-800 hover:bg-zinc-700 dark:hover:bg-zinc-700"
                 to="/"
             >
-              <fa icon="house" />
+              <nuxt-icon name="header/home"/>
               Главная
             </nuxt-link>
           </li>
@@ -91,7 +91,7 @@
                 href="#"
                 @click="popup.toggleCats"
             >
-              <fa icon="braille" />
+              <nuxt-icon name="header/braille"/>
               Категории
             </button>
           </li>
@@ -100,7 +100,7 @@
                 class="p-3 inline-block bg-second dark:bg-zinc-800 hover:bg-zinc-700 dark:hover:bg-zinc-700"
                 to="/alphabet"
             >
-              <fa icon="arrow-down-a-z" />
+              <nuxt-icon name="header/arrow-down-a-z" />
               Сайты по алфавиту
             </nuxt-link>
           </li>
@@ -109,7 +109,7 @@
                 class="p-3 inline-block bg-second dark:bg-zinc-800 hover:bg-zinc-700 dark:hover:bg-zinc-700"
                 to="/blog"
             >
-              <fa icon="newspaper" />
+              <nuxt-icon name="header/newspaper" />
               Блог
             </nuxt-link>
           </li>
@@ -143,6 +143,8 @@ import {ShopsSearchType} from "~/types/components/HeaderSearchType";
 import _ from "lodash";
 import {usePopupStore} from "~/store/popup.store";
 
+const colorMode = useColorMode()
+
 defineProps<{holiday: HolidayType}>()
 
 const router = useRouter()
@@ -165,9 +167,9 @@ function submitSearch():void {
 }
 
 function changeColorMode():void {
-  // this.$colorMode.preference === 'dark'
-  //     ? (this.$colorMode.preference = 'light')
-  //     : (this.$colorMode.preference = 'dark')
+  colorMode.preference === 'dark'
+      ? (colorMode.preference = 'light')
+      : (colorMode.preference = 'dark')
 }
 
 watch(() => searchQuery.value, _.debounce(async function () {
