@@ -31,6 +31,30 @@ export default defineNuxtConfig({
         },
       ],
       link: [
+        {
+          rel: 'stylesheet',
+          href: '/fonts/Roboto-Black.woff2'
+        },
+        {
+          rel: 'stylesheet',
+          href: '/fonts/Roboto-Bold.woff2'
+        },
+        {
+          rel: 'stylesheet',
+          href: '/fonts/Roboto-Light.woff2'
+        },
+        {
+          rel: 'stylesheet',
+          href: '/fonts/Roboto-Medium.woff2'
+        },
+        {
+          rel: 'stylesheet',
+          href: '/fonts/Roboto-Regular.woff2'
+        },
+        {
+          rel: 'stylesheet',
+          href: '/fonts/Roboto-Thin.woff2'
+        },
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         {
           rel: 'apple-touch-icon',
