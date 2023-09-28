@@ -1,4 +1,5 @@
 import {ShopDescriptionType} from "~/types/ShopDescriptionType";
+import {CategoryType} from "~/types/CategoryType";
 
 export interface ShopType {
   id?: number
@@ -14,4 +15,5 @@ export interface ShopType {
   counter: number
   lat_title: string
   shop_description: ShopDescriptionType
+  category: CategoryType
 }
