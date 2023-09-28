@@ -1,5 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-
+import axios from 'axios'
 
 export default defineNuxtConfig({
 
@@ -93,6 +93,42 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
   ],
+
+  sitemap: {
+    urls: async () => {
+      const result:any[] = []
+      const [
+        categoryData,
+        shopData,
+        holidayData,
+        blogData
+      ] = await Promise.all([
+        axios.get('https://za-halyavoi.ru/api/admin/sitemap/category'),
+        axios.get('https://za-halyavoi.ru/api/admin/sitemap/shop'),
+        axios.get('https://za-halyavoi.ru/api/admin/sitemap/holidays'),
+        axios.get('https://za-halyavoi.ru/api/admin/sitemap/blog')
+      ])
+      // @ts-ignore
+      categoryData.data.forEach((i) =>
+        result.push(`/categories/${i.lat_title}`)
+      )
+      // @ts-ignore
+      shopData.data.forEach((i) => result.push(`/shop/${i.lat_title}`))
+      // @ts-ignore
+      holidayData.data.forEach((i) => result.push(`/tags/${i.lat_title}`))
+      // @ts-ignore
+      blogData.data.forEach((i) => result.push(`/blog/${i.lat_title}`))
+      return result.map(p => {
+        return { loc: p,
+          lastmod: new Date(),
+          changefreq: 'daily',
+          priority: 0.8,
+          gzip: true,
+        }
+      })
+    },
+    exclude: ['/go', '/search'],
+  },
 
   tailwindcss: {
     cssPath: '~/assets/tailwind.css',
