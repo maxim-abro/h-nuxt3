@@ -123,23 +123,115 @@ export default defineNuxtConfig({
   ],
 
   pwa: {
-    meta: {
-      title: 'za halyavoi',
-      author: 'za-halyavoi',
-      viewport:
-        'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no',
-    },
+    registerType: 'autoUpdate',
     manifest: {
-      name: 'za-halyavoi',
+      name: 'za halyavoi',
       short_name: 'halyava',
-      lang: 'ru',
+      theme_color: '#ffffff',
+        icons: [
+          {
+            src: "icons/icon-72x72.png",
+            sizes: "72x72",
+            type: "image/png",
+          },
+          {
+            src: "icons/icon-128x128.png",
+            sizes: "128x128",
+            type: "image/png",
+          },
+          {
+            src: "icons/icon-144x144.png",
+            sizes: "144x144",
+            type: "image/png",
+          },
+          {
+            src: "icons/icon-152x152.png",
+            sizes: "152x152",
+            type: "image/png",
+          },
+          {
+            src: "icons/icon-192x192.png",
+            sizes: "192x192",
+            type: "image/png",
+          },
+          {
+            src: "icons/icon-384x384.png",
+            sizes: "384x384",
+            type: "image/png",
+          },
+          {
+            src: "icons/icon-512x512.png",
+            sizes: "512x512",
+            type: "image/png",
+          }
+        ],
     },
-    icon: {
-      source: 'static/za-halyavoi.png',
-      filename: 'za-halyavoi.png',
-      purpose: 'maskable',
+    workbox: {
+      navigateFallback: '/',
+      globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
+    },
+    client: {
+      installPrompt: true,
+      // you don't need to include this: only for testing purposes
+      // if enabling periodic sync for update use 1 hour or so (periodicSyncForUpdates: 3600)
+      periodicSyncForUpdates: 20,
+    },
+    devOptions: {
+      enabled: true,
+      suppressWarnings: true,
+      navigateFallbackAllowlist: [/^\/$/],
+      type: 'module',
     },
   },
+
+  // pwa: {
+  //   registerType: 'autoUpdate',
+  //   manifest: {
+  //     name: "za-halyavoi",
+  //     short_name: "halyava",
+  //     icons: [
+  //       {
+  //         src: "icon_64x64.1fbd2b.png",
+  //         sizes: "64x64",
+  //         type: "image/png",
+  //       },
+  //       {
+  //         src: "icon_120x120.1fbd2b.png",
+  //         sizes: "120x120",
+  //         type: "image/png",
+  //       },
+  //       {
+  //         src: "icon_144x144.1fbd2b.png",
+  //         sizes: "144x144",
+  //         type: "image/png",
+  //       },
+  //       {
+  //         src: "icon_152x152.1fbd2b.png",
+  //         sizes: "152x152",
+  //         type: "image/png",
+  //       },
+  //       {
+  //         src: "icon_192x192.1fbd2b.png",
+  //         sizes: "192x192",
+  //         type: "image/png",
+  //       },
+  //       {
+  //         src: "icon_384x384.1fbd2b.png",
+  //         sizes: "384x384",
+  //         type: "image/png",
+  //       },
+  //       {
+  //         src: "icon_512x512.1fbd2b.png",
+  //         sizes: "512x512",
+  //         type: "image/png",
+  //       }
+  //     ],
+  //     start_url: "/?standalone=true",
+  //     display: "standalone",
+  //     background_color: "#ffffff",
+  //     lang: "ru"
+  //   }
+  // },
 
   colorMode: {
     preference: 'light',
