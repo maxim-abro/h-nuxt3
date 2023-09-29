@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
-import { HolidayType } from "~/types/HolidayType";
 import axios, { AxiosResponse } from "axios";
+import { HolidayType } from "~/types/HolidayType";
 
 export const useHeaderStore = defineStore({
   id: "header",

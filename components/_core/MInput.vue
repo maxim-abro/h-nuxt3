@@ -17,8 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { UnwrapRef } from "vue";
-import { Ref } from "@vue/reactivity";
+import { UnwrapRef, Ref } from "vue";
 
 interface InputType {
   type?:

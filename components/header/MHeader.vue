@@ -130,6 +130,8 @@
 </template>
 
 <script setup lang="ts">
+import { Ref, UnwrapRef } from "vue";
+import _ from "lodash";
 import MInput from "~/components/_core/MInput.vue";
 import MHeaderSearch from "~/components/header/MHeaderSearch.vue";
 import MHeaderSearchMobile from "~/components/header/MHeaderSearchMobile.vue";
@@ -137,10 +139,7 @@ import MButton from "~/components/_core/MButton.vue";
 import MHeaderCategories from "~/components/header/MHeaderCategories.vue";
 import MobileMenu from "~/components/header/MobileMenu.vue";
 import { HolidayType } from "~/types/HolidayType";
-import { Ref } from "@vue/reactivity";
-import { UnwrapRef } from "vue";
 import { ShopsSearchType } from "~/types/components/HeaderSearchType";
-import _ from "lodash";
 import { usePopupStore } from "~/store/popup.store";
 
 const colorMode = useColorMode();

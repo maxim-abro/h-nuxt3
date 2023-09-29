@@ -18,7 +18,7 @@
             <nuxt-icon v-show="isOpenCategories" name="chevron-up" />
             <nuxt-icon v-show="!isOpenCategories" name="chevron-down" />
           </div>
-          <div class="" v-if="isOpenCategories">
+          <div v-if="isOpenCategories" class="">
             <a
               v-for="category in aside.popularCategories"
               :key="category.uin"
@@ -65,7 +65,7 @@
             <nuxt-icon v-show="isOpenPopular" name="chevron-up" />
             <nuxt-icon v-show="!isOpenPopular" name="chevron-down" />
           </div>
-          <div class="grid grid-cols-2" v-show="isOpenPopular">
+          <div v-show="isOpenPopular" class="grid grid-cols-2">
             <a
               v-for="shop of aside.popular"
               :key="shop.shop.uin"
@@ -105,12 +105,11 @@
 </template>
 
 <script setup lang="ts">
+import { Ref, UnwrapRef } from "vue";
 import MCollapse from "~/components/_core/MCollapse.vue";
 import { usePopupStore } from "~/store/popup.store";
 import { useAsideStore } from "~/store/aside.store";
 import { useColorMode } from "#imports";
-import { Ref } from "@vue/reactivity";
-import { UnwrapRef } from "vue";
 
 const router = useRouter();
 const popup = usePopupStore();

@@ -48,13 +48,12 @@
 </template>
 
 <script setup lang="ts">
+import { computed, reactive, ComputedRef } from "vue";
+import { CookieRef, useCookie } from "#app";
 import MBreadCrumbs from "~/components/MBreadCrumbs.vue";
 import { useSeoStore } from "~/store/seo.store";
-import { computed, reactive } from "vue";
 import { BlogTagsType, BlogType } from "~/types/BlogType";
 import { Crumb } from "~/types/components/BreadcrumbsType";
-import { ComputedRef } from "@vue/reactivity";
-import { useCookie } from "#app";
 
 const route = useRoute();
 const seo = useSeoStore();
@@ -89,17 +88,17 @@ const blog = reactive({
 const tagsList: ComputedRef<string[]> = computed(() => {
   return blog.blog_tags.map((i) => i.title);
 });
-async function likeBlog(lat_title: string): void {
-  const likes = useCookie("likes-blog");
+async function likeBlog(latTitle: string): Promise<void> {
+  const likes: CookieRef<string[]> = useCookie("likes-blog");
   if (!likes.value) {
-    await $fetch(`https://za-halyavoi.ru/api/blog/like/${lat_title}`);
-    likes.value = [lat_title];
+    await $fetch(`https://za-halyavoi.ru/api/blog/like/${latTitle}`);
+    likes.value = [latTitle];
     blog.likes = blog.likes + 1;
   } else {
-    const findLike = likes.value.find((i) => i === lat_title);
+    const findLike = likes.value.find((i) => i === latTitle);
     if (!findLike) {
-      likes.value.push(lat_title);
-      await $fetch(`https://za-halyavoi.ru/api/blog/like/${lat_title}`);
+      likes.value.push(latTitle);
+      await $fetch(`https://za-halyavoi.ru/api/blog/like/${latTitle}`);
       blog.likes = blog.likes + 1;
     }
   }

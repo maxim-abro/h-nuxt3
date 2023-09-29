@@ -11,8 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { ComputedRef, Ref } from "@vue/reactivity";
-import { computed, ref, UnwrapRef } from "vue";
+import { ComputedRef, Ref, computed, ref, UnwrapRef } from "vue";
 
 interface ButtonType {
   color?: "primary" | string;

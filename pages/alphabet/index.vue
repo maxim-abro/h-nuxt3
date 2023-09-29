@@ -128,9 +128,8 @@
 </template>
 
 <script setup lang="ts">
+import { ComputedRef, Ref, computed, UnwrapRef } from "vue";
 import { ShopType } from "~/types/ShopType";
-import { ComputedRef, Ref } from "@vue/reactivity";
-import { computed, UnwrapRef } from "vue";
 import { useSeoStore } from "~/store/seo.store";
 
 const route = useRoute();

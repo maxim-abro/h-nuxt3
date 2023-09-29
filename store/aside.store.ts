@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
-import { PopularCategoriesType } from "~/types/PopularCategoriesType";
 import axios, { AxiosResponse } from "axios";
+import { PopularCategoriesType } from "~/types/PopularCategoriesType";
 
 export const useAsideStore = defineStore({
   id: "aside",

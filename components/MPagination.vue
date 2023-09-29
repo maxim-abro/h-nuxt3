@@ -16,10 +16,10 @@
         <template v-for="page in pages" :key="page">
           <a
             v-if="page < innerSelected + 5 && page > innerSelected - 5"
-            @click="handlePageSelected(page)"
             href="#"
             :class="page === innerSelected ? activeClass : defaultClass"
             class="relative inline-flex items-center border px-4 py-2 text-sm font-medium focus:z-20 dark:bg-zinc-800 dark:border-zinc-500 hover:text-primary"
+            @click="handlePageSelected(page)"
           >
             {{ page }}</a
           >

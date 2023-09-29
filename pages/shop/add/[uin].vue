@@ -42,13 +42,12 @@
 </template>
 
 <script setup lang="ts">
+import { Ref, UnwrapRef } from "vue";
 import MBreadCrumbs from "~/components/MBreadCrumbs.vue";
 import MInput from "~/components/_core/MInput.vue";
 import { useSeoStore } from "~/store/seo.store";
 import { ShopType } from "~/types/ShopType";
 import { Crumb } from "~/types/components/BreadcrumbsType";
-import { Ref } from "@vue/reactivity";
-import { UnwrapRef } from "vue";
 
 interface SeoType {
   title: string;

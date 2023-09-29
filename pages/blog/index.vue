@@ -46,11 +46,10 @@
 </template>
 
 <script setup lang="ts">
+import { Ref, UnwrapRef } from "vue";
 import MBreadCrumbs from "~/components/MBreadCrumbs.vue";
 import MButton from "~/components/_core/MButton.vue";
 import { BlogType } from "~/types/BlogType";
-import { Ref } from "@vue/reactivity";
-import { UnwrapRef } from "vue";
 import { Crumb } from "~/types/components/BreadcrumbsType";
 import { useSeoStore } from "~/store/seo.store";
 

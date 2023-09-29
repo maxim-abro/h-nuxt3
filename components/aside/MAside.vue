@@ -101,10 +101,9 @@
 
 <script setup lang="ts">
 import * as yup from "yup";
+import { Ref, UnwrapRef } from "vue";
 import MInput from "~/components/_core/MInput.vue";
 import MButton from "~/components/_core/MButton.vue";
-import { Ref } from "@vue/reactivity";
-import { UnwrapRef } from "vue";
 
 interface TypeForm {
   email: string;

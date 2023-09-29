@@ -25,10 +25,9 @@
 </template>
 
 <script setup lang="ts">
+import { Ref, UnwrapRef } from "vue";
 import MBreadCrumbs from "~/components/MBreadCrumbs.vue";
 import { useSeoStore } from "~/store/seo.store";
-import { Ref } from "@vue/reactivity";
-import { UnwrapRef } from "vue";
 import { CategoryType } from "~/types/CategoryType";
 import { Crumb } from "~/types/components/BreadcrumbsType";
 

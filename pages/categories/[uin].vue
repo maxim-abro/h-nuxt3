@@ -25,12 +25,11 @@
 </template>
 
 <script setup lang="ts">
+import { Ref, UnwrapRef } from "vue";
 import MBreadCrumbs from "~/components/MBreadCrumbs.vue";
 import { useSeoStore } from "~/store/seo.store";
 import { CategoryType } from "~/types/CategoryType";
 import { ShopType } from "~/types/ShopType";
-import { Ref } from "@vue/reactivity";
-import { UnwrapRef } from "vue";
 import { Crumb } from "~/types/components/BreadcrumbsType";
 
 const route = useRoute();

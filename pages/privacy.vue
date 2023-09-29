@@ -510,8 +510,8 @@
 </template>
 
 <script setup lang="ts">
-import MBreadCrumbs from "~/components/MBreadCrumbs.vue";
 import { useRoute } from "vue-router";
+import MBreadCrumbs from "~/components/MBreadCrumbs.vue";
 import { useSeoStore } from "~/store/seo.store";
 
 const route = useRoute();

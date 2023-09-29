@@ -1,5 +1,4 @@
 import { usePopupStore } from "~/store/popup.store";
-import { useRoute } from "vue-router";
 
 export default async function (to: any): Promise<void> {
   const popup = usePopupStore();

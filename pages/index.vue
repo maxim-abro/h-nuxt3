@@ -97,15 +97,15 @@
 </template>
 
 <script setup lang="ts">
-import MVerticalCard from "~/components/cards/MVerticalCard.vue";
-import MPagination from "~/components/MPagination.vue";
-import { useAsyncData, useCookie } from "#app";
+import { CookieRef, useAsyncData, useCookie } from "#app";
 import { LocationQueryValue, useRoute, useRouter } from "vue-router";
-import { Ref } from "@vue/reactivity";
-import { UnwrapRef } from "vue";
+import { Ref, UnwrapRef } from "vue";
+import MPagination from "~/components/MPagination.vue";
+import MVerticalCard from "~/components/cards/MVerticalCard.vue";
 import { ResponsePosts } from "~/types/pages/IndexPageTypes";
 import { PostType } from "~/types/PostType";
 import { useSeoStore } from "~/store/seo.store";
+
 const route = useRoute();
 const router = useRouter();
 const seo = useSeoStore();
@@ -198,7 +198,7 @@ watch(
 );
 
 async function likePost(uin: string) {
-  const likes = useCookie("likes");
+  const likes: CookieRef<string[]> = useCookie("likes");
   console.log(likes.value);
   if (!likes.value) {
     await $fetch(`https://za-halyavoi.ru/api/post/like/${uin}`);

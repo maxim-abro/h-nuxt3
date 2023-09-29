@@ -20,8 +20,8 @@
           <nuxt-link
             class="text-primary underline hover:no-underline"
             to="/alphabet"
-            >других магазинов</nuxt-link
-          >
+            >других магазинов
+          </nuxt-link>
         </h2>
       </div>
 
@@ -58,15 +58,14 @@
 </template>
 
 <script setup lang="ts">
+import { UnwrapRef, Ref } from "vue";
+import { LocationQueryValue } from "vue-router";
 import MBreadCrumbs from "~/components/MBreadCrumbs.vue";
 import MPopularAside from "~/components/aside/MPopularAside.vue";
 import MHorizontalCard from "~/components/cards/MHorizontalCard.vue";
 import ShopAside from "~/components/aside/ShopAside.vue";
 import { useSeoStore } from "~/store/seo.store";
 import { ShopType } from "~/types/ShopType";
-import { UnwrapRef } from "vue";
-import { Ref } from "@vue/reactivity";
-import { LocationQueryValue } from "vue-router";
 import { PostType } from "~/types/PostType";
 import { Crumb } from "~/types/components/BreadcrumbsType";
 import { useAsideStore } from "~/store/aside.store";
@@ -97,7 +96,7 @@ const responsePosts = await $fetch<{ count: number; rows: PostType[] }>(
 const responseRecommended = await $fetch<PostType[]>(
   "https://za-halyavoi.ru/api/post/recommended",
   {
-    method: "post",
+    method: "POST",
     body: {
       categories: responseShop.categories,
       shop: responseShop.uin,
@@ -112,7 +111,7 @@ const breadCrumbs: Ref<UnwrapRef<Crumb[]>> = ref([
   },
   { title: responseShop.title, link: "" },
 ]);
-////////////////////////////////////////////////////
+/// /////////////////////////////////////////////////
 
 const shopData: Ref<UnwrapRef<ShopType>> = ref(responseShop);
 const posts: Ref<UnwrapRef<PostType[]>> = ref(responsePosts.rows);

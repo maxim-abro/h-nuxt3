@@ -34,13 +34,12 @@
 </template>
 
 <script setup lang="ts">
-import { ComputedRef, Ref } from "@vue/reactivity";
-import { computed, UnwrapRef } from "vue";
-import { CategoryType } from "~/types/CategoryType";
+import { ComputedRef, Ref, computed, UnwrapRef } from "vue";
 import { RouteLocationRaw, useRouter } from "vue-router";
-import { usePopupStore } from "~/store/popup.store";
 import { FetchResponse } from "ofetch";
 import { _AsyncData } from "#app/composables/asyncData";
+import { usePopupStore } from "~/store/popup.store";
+import { CategoryType } from "~/types/CategoryType";
 
 const router = useRouter();
 const popupStore = usePopupStore();

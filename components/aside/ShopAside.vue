@@ -57,9 +57,8 @@
 </template>
 
 <script setup lang="ts">
+import { Ref, UnwrapRef } from "vue";
 import { ShopType } from "~/types/ShopType";
-import { Ref } from "@vue/reactivity";
-import { UnwrapRef } from "vue";
 
 defineProps<{ data: ShopType }>();
 

@@ -98,8 +98,8 @@
 </template>
 
 <script setup lang="ts">
-import { useSeoStore } from "~/store/seo.store";
 import { useRoute } from "vue-router";
+import { useSeoStore } from "~/store/seo.store";
 import { Crumb } from "~/types/components/BreadcrumbsType";
 
 const seo = useSeoStore();

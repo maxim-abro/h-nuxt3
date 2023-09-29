@@ -13,8 +13,8 @@
 </template>
 
 <script setup lang="ts">
-import type { SwitchType } from "~/types/components/SwitchType";
 import { Ref, ref, UnwrapRef, watch } from "vue";
+import type { SwitchType } from "~/types/components/SwitchType";
 
 const emit = defineEmits(["update:modelValue"]);
 const props = withDefaults(defineProps<SwitchType>(), {

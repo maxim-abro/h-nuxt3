@@ -4,8 +4,8 @@
     :class="post.recomended ? 'shadow-primary' : ''"
   >
     <img
-      :title="post.shop.title"
       v-if="post.shop"
+      :title="post.shop.title"
       loading="lazy"
       :src="`https://za-halyavoi.ru/api/static/${post.shop.image}`"
       class="mx-auto h-[59px] cursor-pointer"
@@ -44,13 +44,13 @@
     </router-link>
 
     <m-button
-      @click="openLink"
       class="block text-center mb-3 w-full font-medium text-xl py-1"
+      @click="openLink"
     >
       {{ post.type === "promoCode" ? "Показать код" : "открыть купон" }}
     </m-button>
 
-    <div class="text-sm" v-if="post.endDate">
+    <div v-if="post.endDate" class="text-sm">
       Действителен до:
       {{
         new Date(post.endDate).toLocaleDateString("ru-RU", {

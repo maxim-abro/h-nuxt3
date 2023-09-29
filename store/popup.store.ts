@@ -1,6 +1,6 @@
-import { defineStore, StoreDefinition } from "pinia";
-import { PostType } from "~/types/PostType";
+import { defineStore } from "pinia";
 import axios, { AxiosResponse } from "axios";
+import { PostType } from "~/types/PostType";
 
 export const usePopupStore = defineStore({
   id: "popup",

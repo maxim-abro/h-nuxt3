@@ -17,10 +17,10 @@
             >Имя</label
           >
           <m-input
+            v-model="formData.name"
             placeholder="Введите имя"
             class="w-full"
             name="name"
-            v-model="formData.name"
           />
         </div>
         <div class="w-1/2">
@@ -30,11 +30,11 @@
             >Электронная почта</label
           >
           <m-input
+            v-model="formData.email"
             placeholder="Введите вашу почту"
             class="w-full"
             name="email"
             type="email"
-            v-model="formData.email"
           />
         </div>
       </div>
@@ -46,10 +46,10 @@
           >Сообщение</label
         >
         <textarea
+          v-model="formData.message"
           name="message"
           placeholder="Введите ваше сообщение"
           class="w-full h-24 focus:outline-0 rounded p-2 box-border w-full focus:outline-0 focus:ring focus:ring-primary placeholder-zinc-800 text-zinc-900 bg-gray-200"
-          v-model="formData.message"
         />
 
         <div class="absolute right-3 bottom-1">
@@ -64,10 +64,10 @@
         >
       </div>
 
-      <div class="text-red-500 text-sm" v-if="error || validate">
+      <div v-if="error || validate" class="text-red-500 text-sm">
         {{ validate || "Неизвестная ошибка" }}
       </div>
-      <div class="text-green-600 text-sm font-medium" v-if="ok">
+      <div v-if="ok" class="text-green-600 text-sm font-medium">
         Ваше сообщение отправлено, мы вам скоро ответим!
       </div>
 
@@ -83,13 +83,12 @@
 
 <script setup lang="ts">
 import * as yup from "yup";
+import { Ref, UnwrapRef } from "vue";
+import { useRoute } from "vue-router";
 import MBreadCrumbs from "~/components/MBreadCrumbs.vue";
 import MButton from "~/components/_core/MButton.vue";
 import MInput from "~/components/_core/MInput.vue";
 import { Crumb } from "~/types/components/BreadcrumbsType";
-import { Ref } from "@vue/reactivity";
-import { UnwrapRef } from "vue";
-import { useRoute } from "vue-router";
 import { useSeoStore } from "~/store/seo.store";
 
 const route = useRoute();

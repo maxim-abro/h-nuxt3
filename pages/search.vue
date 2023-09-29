@@ -7,14 +7,14 @@
     </h1>
 
     <div
-      class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-3"
       v-if="searchData.length"
+      class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-3"
     >
       <nuxt-link
-        :to="`/shop/${shop.lat_title}`"
-        class=""
         v-for="shop of searchData"
         :key="shop.uin"
+        :to="`/shop/${shop.lat_title}`"
+        class=""
       >
         <img
           :title="shop.title"
@@ -26,18 +26,17 @@
         <h2 class="text-center">{{ shop.title }}</h2>
       </nuxt-link>
     </div>
-    <div class="font-medium text-lg" v-if="!searchData.length">
+    <div v-if="!searchData.length" class="font-medium text-lg">
       Ничего не найдено по запросу "{{ dataq }}"
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import MBreadCrumbs from "~/components/MBreadCrumbs.vue";
-import { ShopsSearchType } from "~/types/components/HeaderSearchType";
-import { Ref } from "@vue/reactivity";
-import { UnwrapRef } from "vue";
+import { Ref, UnwrapRef } from "vue";
 import { LocationQueryValue } from "vue-router";
+import { ShopsSearchType } from "~/types/components/HeaderSearchType";
+import MBreadCrumbs from "~/components/MBreadCrumbs.vue";
 import { Crumb } from "~/types/components/BreadcrumbsType";
 import { useSeoStore } from "~/store/seo.store";
 

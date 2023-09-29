@@ -17,10 +17,10 @@
       leave-class="max-h-[500px] overflow-hidden"
       leave-to-class="overflow-hidden max-h-0"
     >
-      <slot name="content" v-if="data.showContent" />
+      <slot v-if="data.showContent" name="content" />
     </transition>
     <template v-else>
-      <slot name="content" v-if="data.showContent" />
+      <slot v-if="data.showContent" name="content" />
     </template>
   </div>
 </template>
