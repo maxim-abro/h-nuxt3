@@ -119,7 +119,27 @@ export default defineNuxtConfig({
     'nuxt-simple-sitemap',
     '@nuxtjs/color-mode',
     'nuxt-icons',
+    '@vite-pwa/nuxt'
   ],
+
+  pwa: {
+    meta: {
+      title: 'za halyavoi',
+      author: 'za-halyavoi',
+      viewport:
+        'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no',
+    },
+    manifest: {
+      name: 'za-halyavoi',
+      short_name: 'halyava',
+      lang: 'ru',
+    },
+    icon: {
+      source: 'static/za-halyavoi.png',
+      filename: 'za-halyavoi.png',
+      purpose: 'maskable',
+    },
+  },
 
   colorMode: {
     preference: 'light',
