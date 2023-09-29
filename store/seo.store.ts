@@ -1,9 +1,9 @@
-import {defineStore} from "pinia";
+import { defineStore } from "pinia";
 
 export const useSeoStore = defineStore({
-  id: 'seo',
+  id: "seo",
   state: () => ({
-    year: '2023',
-    month: 'сентябрь',
-  })
-})
+    year: "2023",
+    month: "сентябрь",
+  }),
+});

@@ -7,19 +7,19 @@
 
     <div class="grid grid-cols-1 xs:grid-cols-2 xl:grid-cols-3 gap-8 mb-8">
       <m-vertical-card
-          v-for="post in posts"
-          :key="post.uin"
-          :post="post"
-          @like="likePost($event)"
+        v-for="post in posts"
+        :key="post.uin"
+        :post="post"
+        @like="likePost($event)"
       />
     </div>
     <m-pagination
-        v-model="pagination.current_page"
-        :pages="pagination.total_pages"
-        class="flex justify-center mb-10"
+      v-model="pagination.current_page"
+      :pages="pagination.total_pages"
+      class="flex justify-center mb-10"
     />
     <div
-        class="prose lg:prose-xl prose-stone dark:prose-invert mb-10 max-w-none"
+      class="prose lg:prose-xl prose-stone dark:prose-invert mb-10 max-w-none"
     >
       <h2>Сайты с промокодами – экономить легко!</h2>
       <p>
@@ -97,118 +97,127 @@
 </template>
 
 <script setup lang="ts">
-import MVerticalCard from '~/components/cards/MVerticalCard.vue'
-import MPagination from '~/components/MPagination.vue'
-import {useAsyncData, useCookie} from "#app";
-import {LocationQueryValue, useRoute, useRouter} from "vue-router";
-import {Ref} from "@vue/reactivity";
-import {UnwrapRef} from "vue";
-import {ResponsePosts} from "~/types/pages/IndexPageTypes";
-import {PostType} from "~/types/PostType";
-import {useSeoStore} from "~/store/seo.store";
-const route = useRoute()
-const router = useRouter()
-const seo = useSeoStore()
-const page:Ref<UnwrapRef<number|string|LocationQueryValue[]>> = ref(route.query.page || 1)
+import MVerticalCard from "~/components/cards/MVerticalCard.vue";
+import MPagination from "~/components/MPagination.vue";
+import { useAsyncData, useCookie } from "#app";
+import { LocationQueryValue, useRoute, useRouter } from "vue-router";
+import { Ref } from "@vue/reactivity";
+import { UnwrapRef } from "vue";
+import { ResponsePosts } from "~/types/pages/IndexPageTypes";
+import { PostType } from "~/types/PostType";
+import { useSeoStore } from "~/store/seo.store";
+const route = useRoute();
+const router = useRouter();
+const seo = useSeoStore();
+const page: Ref<UnwrapRef<number | string | LocationQueryValue[]>> = ref(
+  route.query.page || 1,
+);
 
-
-const postRes = await $fetch<ResponsePosts>(`https://za-halyavoi.ru/api/post?page=${page.value}`)
+const postRes = await $fetch<ResponsePosts>(
+  `https://za-halyavoi.ru/api/post?page=${page.value}`,
+);
 
 const pagination = ref({
-  current_page: route.query.page || 1 as number|string|LocationQueryValue[],
+  current_page:
+    route.query.page || (1 as number | string | LocationQueryValue[]),
   total_elements: postRes.count as number,
   total_pages: Math.ceil(postRes.count / 15) as number,
-})
-const posts:Ref<UnwrapRef<PostType[]>> = ref(postRes.rows)
+});
+const posts: Ref<UnwrapRef<PostType[]>> = ref(postRes.rows);
 
 useHead({
   title: `Промокоды, скидки и акции для сайтов и интернет-магазинов на ${seo.month} ${seo.year} год`,
   meta: [
     {
-      hid: 'description',
-      name: 'description',
+      hid: "description",
+      name: "description",
       // @ts-ignore
       content: `Свежие промокоды, скидки и акции на ${seo.month} ${seo.year} год, а также эксклюзивные купоны. Бегом za халявой!`,
     },
     {
-      hid: 'keywords',
-      name: 'keywords',
+      hid: "keywords",
+      name: "keywords",
       // @ts-ignore
       content: `сайты, промокоды, скидки, акции, магазины, акция, промокод, скидка, ${seo.month}`,
     },
     {
-      property: 'og:title',
+      property: "og:title",
       // @ts-ignore
       content: `Промокоды, скидки и акции для сайтов и интернет-магазинов на ${seo.month} ${seo.year} год`,
     },
     {
-      property: 'og:description',
+      property: "og:description",
       // @ts-ignore
       content: `Свежие промокоды, скидки и акции на ${seo.month} ${seo.year} год, а также эксклюзивные купоны. Бегом za халявой!`,
     },
     {
-      property: 'og:url',
+      property: "og:url",
       // @ts-ignore
       content: `https://za-halyavoi.ru${route.fullPath}`,
     },
     {
-      property: 'og:image',
-      content: 'https://za-halyavoi.ru/logo.png',
+      property: "og:image",
+      content: "https://za-halyavoi.ru/logo.png",
     },
     {
-      property: 'og:type',
-      content: 'article',
+      property: "og:type",
+      content: "article",
     },
     {
-      property: 'og:site_name',
-      content: 'за халявой',
+      property: "og:site_name",
+      content: "за халявой",
     },
     {
-      property: 'og:image:url',
-      content: 'https://za-halyavoi.ru/logo.png',
+      property: "og:image:url",
+      content: "https://za-halyavoi.ru/logo.png",
     },
   ],
   link: [
     {
-      rel: 'canonical',
+      rel: "canonical",
       // @ts-ignore
-      href: 'https://za-halyavoi.ru/',
+      href: "https://za-halyavoi.ru/",
     },
   ],
-})
+});
 
-watch(() => pagination.value.current_page, async (query: string | number | LocationQueryValue[]) => {
-  await router.push({
-    query:{
-      page: pagination.value.current_page.toString()
-    }
-  })
-  const postRes = await $fetch<ResponsePosts>(`https://za-halyavoi.ru/api/post?page=${query}`)
-  posts.value = postRes.rows
-  // this.$refs.hot.scrollIntoView({ block: 'start', behavior: 'smooth' })
-})
+watch(
+  () => pagination.value.current_page,
+  async (query: string | number | LocationQueryValue[]) => {
+    await router.push({
+      query: {
+        page: pagination.value.current_page.toString(),
+      },
+    });
+    const postRes = await $fetch<ResponsePosts>(
+      `https://za-halyavoi.ru/api/post?page=${query}`,
+    );
+    posts.value = postRes.rows;
+    // this.$refs.hot.scrollIntoView({ block: 'start', behavior: 'smooth' })
+  },
+);
 
-async function likePost(uin:string) {
-  const likes = useCookie('likes')
-  console.log(likes.value)
+async function likePost(uin: string) {
+  const likes = useCookie("likes");
+  console.log(likes.value);
   if (!likes.value) {
-    await $fetch(`https://za-halyavoi.ru/api/post/like/${uin}`)
-    likes.value = [uin]
-    posts.value.forEach((i:PostType) => {
+    await $fetch(`https://za-halyavoi.ru/api/post/like/${uin}`);
+    likes.value = [uin];
+    posts.value.forEach((i: PostType) => {
       if (i.uin === uin) {
-        i.rating = i.rating + 1
+        i.rating = i.rating + 1;
       }
-    })
+    });
   } else {
-    const findLike = likes.value.find((i:string) => i === uin)
+    const findLike = likes.value.find((i: string) => i === uin);
     if (!findLike) {
-      likes.value.push(uin)
-      await $fetch(`https://za-halyavoi.ru/api/post/like/${uin}`)
-      posts.value.forEach((i:PostType) => {
+      likes.value.push(uin);
+      await $fetch(`https://za-halyavoi.ru/api/post/like/${uin}`);
+      posts.value.forEach((i: PostType) => {
         if (i.uin === uin) {
-          i.rating = i.rating + 1
+          i.rating = i.rating + 1;
         }
-      })
+      });
     }
   }
 }

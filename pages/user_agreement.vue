@@ -13,19 +13,19 @@
     <p>Используя сайт, Вы соглашаетесь с условиями данного соглашения.</p>
 
     <b class="mt-3 block"
-    >Если Вы не согласны с условиями данного соглашения, не используйте сайт
+      >Если Вы не согласны с условиями данного соглашения, не используйте сайт
       за халявой!</b
     >
 
     <h2 class="mt-8 text-2xl">Предмет соглашения</h2>
     <b class="mt-3 block"
-    >Администрация предоставляет пользователю право на размещение на сайте
+      >Администрация предоставляет пользователю право на размещение на сайте
       следующей информации:</b
     >
 
     <h2 class="mt-8 text-2xl">Предмет соглашения</h2>
     <b class="mt-3 block"
-    >Администрация предоставляет пользователю право на размещение на сайте
+      >Администрация предоставляет пользователю право на размещение на сайте
       следующей информации:</b
     >
     <ul class="list-inside list-disc">
@@ -105,70 +105,69 @@
 </template>
 
 <script setup lang="ts">
-import MBreadCrumbs from '~/components/MBreadCrumbs.vue'
-import {Crumb} from "~/types/components/BreadcrumbsType"
-import {useSeoStore} from "~/store/seo.store";
+import MBreadCrumbs from "~/components/MBreadCrumbs.vue";
+import { Crumb } from "~/types/components/BreadcrumbsType";
+import { useSeoStore } from "~/store/seo.store";
 
-const route = useRoute()
-const seo = useSeoStore()
+const route = useRoute();
+const seo = useSeoStore();
 
 const breadCrumbs: Crumb[] = [
   {
-    title: 'Пользовательское соглашение',
-    link: ''
-  }
-]
-
+    title: "Пользовательское соглашение",
+    link: "",
+  },
+];
 
 useHead({
-  title: 'Пользовательское Соглашение za-halyavoi.ru',
+  title: "Пользовательское Соглашение za-halyavoi.ru",
   meta: [
     {
-      hid: 'description',
-      name: 'description',
+      hid: "description",
+      name: "description",
       content: `Пользовательское Соглашение. Свежие промокоды, скидки и акции на ${seo.month} ${seo.year} год, а также эксклюзивные купоны. Бегом za халявой!`,
     },
     {
-      hid: 'keywords',
-      name: 'keywords',
+      hid: "keywords",
+      name: "keywords",
       content:
-          'сайты, политика, алфавит, промокоды, скидки, акции, магазины, акция, промокод, скидка',
+        "сайты, политика, алфавит, промокоды, скидки, акции, магазины, акция, промокод, скидка",
     },
     {
-      property: 'og:title',
+      property: "og:title",
       content: `Пользовательское Соглашение`,
     },
     {
-      property: 'og:description',
+      property: "og:description",
       content: `Пользовательское Соглашение. Свежие промокоды, скидки и акции на ${seo.month} ${seo.year} год, а также эксклюзивные купоны. Бегом za халявой!`,
     },
     {
-      property: 'og:url',
+      property: "og:url",
       content: `https://za-halyavoi.ru${route.fullPath}`,
     },
     {
-      property: 'og:image',
-      content: 'https://za-halyavoi.ru/logo.png',
+      property: "og:image",
+      content: "https://za-halyavoi.ru/logo.png",
     },
     {
-      property: 'og:type',
-      name: 'og:type',
-      content: 'article',
+      property: "og:type",
+      name: "og:type",
+      content: "article",
     },
     {
-      property: 'og:site_name',
-      content: 'за халявой',
+      property: "og:site_name",
+      content: "за халявой",
     },
     {
-      property: 'og:image:url',
-      content: 'https://za-halyavoi.ru/logo.png',
+      property: "og:image:url",
+      content: "https://za-halyavoi.ru/logo.png",
     },
   ],
   link: [
     {
-      rel: 'canonical',
-      href: 'https://za-halyavoi.ru/user_agreement',
+      rel: "canonical",
+      href: "https://za-halyavoi.ru/user_agreement",
     },
   ],
-})
+});
 </script>

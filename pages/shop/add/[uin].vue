@@ -6,9 +6,9 @@
     </h1>
 
     <img
-        loading="lazy"
-        :src="`https://za-halyavoi.ru/api/static/${shop.image}`"
-        :alt="seo.title"
+      loading="lazy"
+      :src="`https://za-halyavoi.ru/api/static/${shop.image}`"
+      :alt="seo.title"
     />
 
     <form action="">
@@ -27,111 +27,111 @@
 
       <div class="font-bold">Описание акции</div>
       <textarea
-          class="rounded p-2 box-border w-full focus:outline-0 focus:ring focus:ring-primary placeholder-zinc-800 text-zinc-900 bg-gray-200"
+        class="rounded p-2 box-border w-full focus:outline-0 focus:ring focus:ring-primary placeholder-zinc-800 text-zinc-900 bg-gray-200"
       ></textarea>
       <small>Минимум 10 символов</small>
 
       <div
-          id="captcha-container"
-          style="height: 100px"
-          class="smart-captcha"
-          data-sitekey="d8jFIYYKucfxlyJcqWWOshC5fOjXZkDfZyweKSTf"
+        id="captcha-container"
+        style="height: 100px"
+        class="smart-captcha"
+        data-sitekey="d8jFIYYKucfxlyJcqWWOshC5fOjXZkDfZyweKSTf"
       ></div>
     </form>
   </div>
 </template>
 
 <script setup lang="ts">
-import MBreadCrumbs from '~/components/MBreadCrumbs.vue'
-import MInput from '~/components/_core/MInput.vue'
-import {useSeoStore} from "~/store/seo.store";
-import {ShopType} from "~/types/ShopType";
-import {Crumb} from "~/types/components/BreadcrumbsType";
-import {Ref} from "@vue/reactivity";
-import {UnwrapRef} from "vue";
+import MBreadCrumbs from "~/components/MBreadCrumbs.vue";
+import MInput from "~/components/_core/MInput.vue";
+import { useSeoStore } from "~/store/seo.store";
+import { ShopType } from "~/types/ShopType";
+import { Crumb } from "~/types/components/BreadcrumbsType";
+import { Ref } from "@vue/reactivity";
+import { UnwrapRef } from "vue";
 
 interface SeoType {
-  title: string
-  description: string
+  title: string;
+  description: string;
 }
 
-const route = useRoute()
-const seoStore = useSeoStore()
+const route = useRoute();
+const seoStore = useSeoStore();
 
-const responseShop = await $fetch<ShopType>(`https://za-halyavoi.ru/api/shop/${route.params.uin}`)
+const responseShop = await $fetch<ShopType>(
+  `https://za-halyavoi.ru/api/shop/${route.params.uin}`,
+);
 
-const breadCrumbs:Ref<UnwrapRef<Crumb[]>> = ref([
-  { link: '/categories', title: 'Категории сайтов' },
+const breadCrumbs: Ref<UnwrapRef<Crumb[]>> = ref([
+  { link: "/categories", title: "Категории сайтов" },
   {
     link: `/categories/${responseShop.category.lat_title}`,
     title: responseShop.category.title,
   },
   { link: `/shop/${route.params.uin}`, title: responseShop.title },
-  { title: 'Добавление купона', link: '' },
-])
-const shop:Ref<UnwrapRef<ShopType>> = ref(responseShop)
-const seo:Ref<UnwrapRef<SeoType>> = ref({
+  { title: "Добавление купона", link: "" },
+]);
+const shop: Ref<UnwrapRef<ShopType>> = ref(responseShop);
+const seo: Ref<UnwrapRef<SeoType>> = ref({
   title: responseShop.title,
-  description: responseShop.description
-})
+  description: responseShop.description,
+});
 
 useHead({
   title: `Добавить промокод для магазина ${seo.value.title} на ${seoStore.month} ${seoStore.year} год.`,
   meta: [
     {
-      hid: 'description',
-      name: 'description',
+      hid: "description",
+      name: "description",
       content:
-          seo.value.description.slice(0, 300) +
-          '...' +
-          ' добавление промокода.',
+        seo.value.description.slice(0, 300) + "..." + " добавление промокода.",
     },
     {
-      hid: 'keywords',
-      name: 'keywords',
+      hid: "keywords",
+      name: "keywords",
       content: `сайты, алфавит, промокоды, скидки, акции, магазины, акция, промокод, скидка, ${seo.value.title}, ${seoStore.month}, ${seoStore.year}`,
     },
     {
-      property: 'og:title',
+      property: "og:title",
       content: `Добавить промокод для магазина ${seo.value.title} на ${seoStore.month} ${seoStore.year} год.`,
     },
     {
-      property: 'og:description',
+      property: "og:description",
       content: seo.value.description,
     },
     {
-      property: 'og:url',
+      property: "og:url",
       content: `https://za-halyavoi.ru${route.fullPath}`,
     },
     {
-      property: 'og:image',
-      content: 'https://za-halyavoi.ru/logo.png',
+      property: "og:image",
+      content: "https://za-halyavoi.ru/logo.png",
     },
     {
-      property: 'og:type',
-      content: 'article',
+      property: "og:type",
+      content: "article",
     },
     {
-      property: 'og:site_name',
-      content: 'за халявой',
+      property: "og:site_name",
+      content: "за халявой",
     },
     {
-      property: 'og:image:url',
-      content: 'https://za-halyavoi.ru/logo.png',
+      property: "og:image:url",
+      content: "https://za-halyavoi.ru/logo.png",
     },
   ],
   script: [
     {
-      src: 'https://captcha-api.yandex.ru/captcha.js',
+      src: "https://captcha-api.yandex.ru/captcha.js",
       defer: true,
     },
   ],
   link: [
     {
-      rel: 'canonical',
+      rel: "canonical",
       // @ts-ignore
-      href: 'https://za-halyavoi.ru/shop/add/' + route.params.uin,
+      href: "https://za-halyavoi.ru/shop/add/" + route.params.uin,
     },
-  ]
-})
+  ],
+});
 </script>

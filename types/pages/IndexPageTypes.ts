@@ -1,6 +1,6 @@
-import {PostType} from "~/types/PostType";
+import { PostType } from "~/types/PostType";
 
 export interface ResponsePosts {
-  count:number
-  rows: PostType[]
+  count: number;
+  rows: PostType[];
 }

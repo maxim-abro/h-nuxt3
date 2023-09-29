@@ -1,5 +1,5 @@
-import {PopularSitesType} from '~/types/PopularSitesType';
+import { PopularSitesType } from "~/types/PopularSitesType";
 
 export interface PopularAsideType {
-  popular: PopularSitesType[]
+  popular: PopularSitesType[];
 }

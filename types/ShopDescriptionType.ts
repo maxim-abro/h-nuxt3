@@ -1,3 +1,3 @@
 export interface ShopDescriptionType {
-  html: string
+  html: string;
 }
