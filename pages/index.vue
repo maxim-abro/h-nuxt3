@@ -15,7 +15,7 @@
     </div>
     <m-pagination
         v-model="pagination.current_page"
-        :page-count="pagination.total_pages"
+        :pages="pagination.total_pages"
         class="flex justify-center mb-10"
     />
     <div
@@ -178,7 +178,7 @@ useHead({
 })
 
 watch(() => pagination.value.current_page, async (query: string | number | LocationQueryValue[]) => {
-  router.push({
+  await router.push({
     query:{
       page: pagination.value.current_page.toString()
     }
