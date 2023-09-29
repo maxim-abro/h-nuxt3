@@ -14,7 +14,7 @@
             to="/"
             class="text-2xl font-black flex items-center text-primary drop-shadow"
         >
-          <img
+          <nuxt-img
               title="за халявой"
               loading="lazy"
               src="/logo-min.png"

@@ -119,8 +119,14 @@ export default defineNuxtConfig({
     'nuxt-simple-sitemap',
     '@nuxtjs/color-mode',
     'nuxt-icons',
-    '@vite-pwa/nuxt'
+    '@vite-pwa/nuxt',
+    '@nuxt/image'
   ],
+
+  image: {
+    quality: 10,
+    format: ['webp']
+  },
 
   pwa: {
     registerType: 'autoUpdate',
