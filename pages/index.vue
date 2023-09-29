@@ -99,7 +99,7 @@
 <script setup lang="ts">
 import MVerticalCard from '~/components/cards/MVerticalCard.vue'
 import MPagination from '~/components/MPagination.vue'
-import {useAsyncData} from "#app";
+import {useAsyncData, useCookie} from "#app";
 import {LocationQueryValue, useRoute, useRouter} from "vue-router";
 import {Ref} from "@vue/reactivity";
 import {UnwrapRef} from "vue";
@@ -188,9 +188,28 @@ watch(() => pagination.value.current_page, async (query: string | number | Locat
   // this.$refs.hot.scrollIntoView({ block: 'start', behavior: 'smooth' })
 })
 
-
-// todo realisation likes with cookie
 async function likePost(uin:string) {
-  await $fetch(`https://za-halyavoi.ru/api/post/like/${uin}`)
+  const likes = useCookie('likes')
+  console.log(likes.value)
+  if (!likes.value) {
+    await $fetch(`https://za-halyavoi.ru/api/post/like/${uin}`)
+    likes.value = [uin]
+    posts.value.forEach((i:PostType) => {
+      if (i.uin === uin) {
+        i.rating = i.rating + 1
+      }
+    })
+  } else {
+    const findLike = likes.value.find((i:string) => i === uin)
+    if (!findLike) {
+      likes.value.push(uin)
+      await $fetch(`https://za-halyavoi.ru/api/post/like/${uin}`)
+      posts.value.forEach((i:PostType) => {
+        if (i.uin === uin) {
+          i.rating = i.rating + 1
+        }
+      })
+    }
+  }
 }
 </script>

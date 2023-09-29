@@ -52,6 +52,7 @@ import {computed, reactive} from "vue";
 import {BlogTagsType, BlogType} from "~/types/BlogType";
 import {Crumb} from "~/types/components/BreadcrumbsType";
 import {ComputedRef} from "@vue/reactivity";
+import {useCookie} from "#app";
 
 const route = useRoute()
 const seo = useSeoStore()
@@ -84,22 +85,20 @@ const blog = reactive({
 const tagsList:ComputedRef<string[]> = computed(() => {
   return blog.blog_tags.map(i => i.title)
 })
-function likeBlog(lat_title: string):void {
-  // todo add cookie like
-  // const likes = this.$cookies.get('likes-blog')
-  // if (!likes) {
-  //   await this.$api.get(`/blog/like/${lat_title}`)
-  //   this.$cookies.set('likes-blog', [lat_title])
-  //   this.likes = this.likes + 1
-  // } else {
-  //   const findLike = likes.find((i) => i === lat_title)
-  //   if (!findLike) {
-  //     likes.push(lat_title)
-  //     await this.$api.get(`/blog/like/${lat_title}`)
-  //     this.$cookies.set('likes-blog', likes)
-  //     this.likes = this.likes + 1
-  //   }
-  // }
+async function likeBlog(lat_title: string):void {
+  const likes = useCookie('likes-blog')
+  if (!likes.value) {
+    await $fetch(`https://za-halyavoi.ru/api/blog/like/${lat_title}`)
+    likes.value = [lat_title]
+    blog.likes = blog.likes + 1
+  } else {
+    const findLike = likes.value.find((i) => i === lat_title)
+    if (!findLike) {
+      likes.value.push(lat_title)
+      await $fetch(`https://za-halyavoi.ru/api/blog/like/${lat_title}`)
+      blog.likes = blog.likes + 1
+    }
+  }
 }
 
 useHead({
