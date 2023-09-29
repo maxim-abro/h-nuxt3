@@ -184,55 +184,6 @@ export default defineNuxtConfig({
     },
   },
 
-  // pwa: {
-  //   registerType: 'autoUpdate',
-  //   manifest: {
-  //     name: "za-halyavoi",
-  //     short_name: "halyava",
-  //     icons: [
-  //       {
-  //         src: "icon_64x64.1fbd2b.png",
-  //         sizes: "64x64",
-  //         type: "image/png",
-  //       },
-  //       {
-  //         src: "icon_120x120.1fbd2b.png",
-  //         sizes: "120x120",
-  //         type: "image/png",
-  //       },
-  //       {
-  //         src: "icon_144x144.1fbd2b.png",
-  //         sizes: "144x144",
-  //         type: "image/png",
-  //       },
-  //       {
-  //         src: "icon_152x152.1fbd2b.png",
-  //         sizes: "152x152",
-  //         type: "image/png",
-  //       },
-  //       {
-  //         src: "icon_192x192.1fbd2b.png",
-  //         sizes: "192x192",
-  //         type: "image/png",
-  //       },
-  //       {
-  //         src: "icon_384x384.1fbd2b.png",
-  //         sizes: "384x384",
-  //         type: "image/png",
-  //       },
-  //       {
-  //         src: "icon_512x512.1fbd2b.png",
-  //         sizes: "512x512",
-  //         type: "image/png",
-  //       }
-  //     ],
-  //     start_url: "/?standalone=true",
-  //     display: "standalone",
-  //     background_color: "#ffffff",
-  //     lang: "ru"
-  //   }
-  // },
-
   colorMode: {
     preference: 'light',
     fallback: 'light',
