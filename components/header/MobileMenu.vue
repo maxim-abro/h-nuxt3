@@ -7,44 +7,39 @@
       <ul>
         <li>
           <nuxt-link to="/" class="mb-2 block" @click.prevent="clickLink('/')"
-          ><nuxt-icon class="text-primary mr-1" name="house" /> Главная</nuxt-link
+          ><nuxt-icon class="text-primary mr-1" name="header/home" /> Главная</nuxt-link
           >
         </li>
         <li>
-          <m-collapse animation>
-            <template #trigger>
-              <div class="mb-2 block">
-                <nuxt-icon class="text-primary mr-1" name="braille" /> Категории
-                <nuxt-icon name="chevron-up" class="arrow" />
-              </div>
-            </template>
-            <template #content>
-              <div class="">
-                <a
-                    v-for="category in aside.popularCategories"
-                    :key="category.uin"
-                    class="ml-4 block my-1"
-                    :href="`/categories/${category.lat_title}`"
-                    @click.prevent="
-                    clickLink(`/categories/${category.lat_title}`)
-                  "
-                ><nuxt-icon :name="`category/${category.icon}`" class="text-second mr-1" />
-                  {{ category.title }}</a
-                >
-                <a
-                    href="/categories"
-                    class="ml-4 block my-1"
-                    @click.prevent="clickLink('/categories')"
-                ><nuxt-icon class="text-second mr-1" name="ellipsis" /> Все
-                  категории</a
-                >
-              </div>
-            </template>
-          </m-collapse>
+          <div class="mb-2 block" @click="isOpenCategories = !isOpenCategories">
+            <nuxt-icon class="text-primary mr-1" name="header/braille" /> Категории
+            <nuxt-icon v-show="isOpenCategories" name="chevron-up" />
+            <nuxt-icon v-show="!isOpenCategories" name="chevron-down" />
+          </div>
+          <div class="" v-if="isOpenCategories">
+            <a
+                v-for="category in aside.popularCategories"
+                :key="category.uin"
+                class="ml-4 block my-1"
+                :href="`/categories/${category.lat_title}`"
+                @click.prevent="
+                clickLink(`/categories/${category.lat_title}`)
+              "
+            ><nuxt-icon :name="`category/${category.icon}`" class="text-second dark:text-primary mr-1" />
+              {{ category.title }}</a
+            >
+            <a
+                href="/categories"
+                class="ml-4 block my-1"
+                @click.prevent="clickLink('/categories')"
+            ><nuxt-icon class="text-second mr-1" name="header/ellipsis" /> Все
+              категории</a
+            >
+          </div>
         </li>
         <li>
           <a href="/blog" class="mb-2 block">
-            <nuxt-icon name="newspaper" class="text-primary" />
+            <nuxt-icon name="header/newspaper" class="text-primary" />
             Блог
           </a>
         </li>
@@ -53,47 +48,43 @@
               href="/alphabet"
               class="mb-2 block"
               @click.prevent="clickLink('/alphabet')"
-          ><nuxt-icon class="text-primary mr-1" name="arrow-down-a-z" /> Сайты по
+          ><nuxt-icon class="text-primary mr-1" name="header/arrow-down-a-z" /> Сайты по
             алфавиту</a
           >
         </li>
         <li>
-          <m-collapse animation>
-            <template #trigger>
-              <div class="mb-2 block">
-                <nuxt-icon name="crown" class="text-primary mr-1" />Популярные
-                приложения <nuxt-icon name="chevron-up" class="arrow" />
-              </div>
-            </template>
-            <template #content>
-              <div class="grid grid-cols-2">
-                <a
-                    v-for="shop of aside.popular"
-                    :key="shop.shop.uin"
-                    :href="`/shop/${shop.shop.uin}`"
-                    class="block"
-                    @click.prevent="clickLink(`/shop/${shop.shop.uin}`)"
-                >
-                  <img
-                      :title="shop.shop.title"
-                      loading="lazy"
-                      :src="`https://za-halyavoi.ru/api/static/${shop.shop.image}`"
-                      :alt="shop.shop.title"
-                  />
-                </a>
-              </div>
-            </template>
-          </m-collapse>
+          <div class="mb-2 block" @click="isOpenPopular = !isOpenPopular">
+            <nuxt-icon name="crown" class="text-primary mr-1" />Популярные
+            приложения
+            <nuxt-icon v-show="isOpenPopular" name="chevron-up" />
+            <nuxt-icon v-show="!isOpenPopular" name="chevron-down" />
+          </div>
+          <div class="grid grid-cols-2" v-show="isOpenPopular">
+            <a
+                v-for="shop of aside.popular"
+                :key="shop.shop.uin"
+                :href="`/shop/${shop.shop.uin}`"
+                class="block"
+                @click.prevent="clickLink(`/shop/${shop.shop.uin}`)"
+            >
+              <img
+                  :title="shop.shop.title"
+                  loading="lazy"
+                  :src="`https://za-halyavoi.ru/api/static/${shop.shop.image}`"
+                  :alt="shop.shop.title"
+              />
+            </a>
+          </div>
         </li>
         <li>
           <button class="" @click="changeColorMode">
             <nuxt-icon
-                v-if="$colorMode.preference === 'dark'"
+                v-show="colorMode.preference === 'dark'"
                 name="moon"
                 class="text-primary mr-1"
             />
             <nuxt-icon
-                v-if="$colorMode.preference === 'light'"
+                v-show="colorMode.preference === 'light'"
                 name="sun"
                 class="text-primary mr-1"
             />
@@ -114,21 +105,26 @@
 import MCollapse from '~/components/_core/MCollapse.vue'
 import {usePopupStore} from "~/store/popup.store";
 import {useAsideStore} from "~/store/aside.store";
+import {useColorMode} from "#imports";
+import {Ref} from "@vue/reactivity";
+import {UnwrapRef} from "vue";
 
 const router = useRouter()
 const popup = usePopupStore()
 const aside = useAsideStore()
 
+const colorMode = useColorMode()
+
+const isOpenCategories:Ref<UnwrapRef<boolean>> = ref(false)
+const isOpenPopular:Ref<UnwrapRef<boolean>> = ref(false)
+
 function clickLink(url: string) {
   popup.toggleMenu()
   router.push(url)
 }
-function changeColorMode() {
-  // // @ts-ignore
-  // this.$colorMode.preference === 'dark'
-  //     ? // @ts-ignore
-  //     (this.$colorMode.preference = 'light')
-  //     : // @ts-ignore
-  //     (this.$colorMode.preference = 'dark')
+function changeColorMode():void {
+  colorMode.preference === 'dark'
+      ? (colorMode.preference = 'light')
+      : (colorMode.preference = 'dark')
 }
 </script>

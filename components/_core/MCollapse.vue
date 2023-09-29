@@ -1,9 +1,9 @@
 <template>
-  <div :class="`${className} ${showContent ? '' : 'collapsed'}`">
+  <div :class="`${className} ${data.showContent ? '' : 'collapsed'}`">
     <component
         :is="triggerTag"
         :class="triggerClass"
-        @click="showContent = !showContent"
+        @click="data.showContent = !data.showContent"
     >
       <slot name="trigger" />
     </component>
@@ -17,44 +17,55 @@
         leave-class="max-h-[500px] overflow-hidden"
         leave-to-class="overflow-hidden max-h-0"
     >
-      <slot v-if="showContent" name="content" />
+      <slot name="content" v-if="data.showContent" />
     </transition>
     <template v-else>
-      <slot v-if="showContent" name="content" />
+      <slot name="content" v-if="data.showContent" />
     </template>
   </div>
 </template>
 
 <script setup lang="ts">
-import {Ref} from "@vue/reactivity";
-import {UnwrapRef} from "vue";
-interface CollapseType {
-  isVisible?: boolean
-  className?: string
-  triggerTag?: string
-  triggerClass?: string
-  animation?: boolean
-}
-const props = withDefaults(defineProps<CollapseType>() , {
-  isVisible: false,
-  className: 'collapse flex flex-col',
-  triggerTag: 'div',
-  triggerClass: '',
-  animation: false,
-})
-
-const emit = defineEmits(['trigger'])
-
-const showContent: Ref<UnwrapRef<boolean>> = ref(props.isVisible)
-
-
-watch(() => showContent.value, () => {
-  emit('trigger', showContent.value)
-})
+import { defineProps, reactive, watch, defineEmits } from "vue";
+const props = defineProps({
+  isVisible: {
+    type: Boolean,
+    default: false,
+  },
+  className: {
+    type: String,
+    default: "collapse flex flex-col",
+  },
+  triggerTag: {
+    type: String,
+    default: "div",
+  },
+  triggerClass: {
+    type: String,
+    default: "",
+  },
+  animation: {
+    type: Boolean,
+    default: false,
+  },
+});
+const data = reactive({
+  showContent: props.isVisible as boolean,
+});
+const emit = defineEmits(["trigger"]);
+watch(
+    () => data.showContent,
+    () => {
+      emit("trigger", data.showContent);
+    }
+);
+const close = () => {
+  data.showContent = false;
+};
 </script>
 
 <style scoped>
-.collapsed .arrow {
-  @apply rotate-180
+.collapsed> .arrow {
+  transform: rotate(-180deg);
 }
 </style>
