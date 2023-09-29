@@ -50,12 +50,12 @@
               @click="changeColorMode"
           >
             <nuxt-icon
-                v-if="colorMode.preference === 'dark'"
+                v-show="colorMode.preference === 'dark'"
                 name="moon"
                 class="text-primary"
             />
             <nuxt-icon
-                v-if="colorMode.preference === 'light'"
+                v-show="colorMode.preference === 'light'"
                 name="sun"
                 class="text-primary"
             />

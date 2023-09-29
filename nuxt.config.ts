@@ -98,18 +98,18 @@ export default defineNuxtConfig({
         // {
         //   src: "/js/mobileAd.js"
         // },
-        {
-          src: '/js/yndx.js',
-        },
-        {
-          src: '/js/google.js',
-        },
+        // {
+        //   src: '/js/yndx.js',
+        // },
+        // {
+        //   src: '/js/google.js',
+        // },
       ],
     },
   },
 
   css:[
-    '@fortawesome/fontawesome-svg-core/styles.css'
+    '~/assets/style.css'
   ],
 
   modules: [
@@ -141,16 +141,12 @@ export default defineNuxtConfig({
         axios.get('https://za-halyavoi.ru/api/admin/sitemap/holidays'),
         axios.get('https://za-halyavoi.ru/api/admin/sitemap/blog')
       ])
-      // @ts-ignore
-      categoryData.data.forEach((i) =>
+      categoryData.data.forEach((i:any) =>
         result.push(`/categories/${i.lat_title}`)
       )
-      // @ts-ignore
-      shopData.data.forEach((i) => result.push(`/shop/${i.lat_title}`))
-      // @ts-ignore
-      holidayData.data.forEach((i) => result.push(`/tags/${i.lat_title}`))
-      // @ts-ignore
-      blogData.data.forEach((i) => result.push(`/blog/${i.lat_title}`))
+      shopData.data.forEach((i:any) => result.push(`/shop/${i.lat_title}`))
+      holidayData.data.forEach((i:any) => result.push(`/tags/${i.lat_title}`))
+      blogData.data.forEach((i:any) => result.push(`/blog/${i.lat_title}`))
       return result.map(p => {
         return { loc: p,
           lastmod: new Date(),

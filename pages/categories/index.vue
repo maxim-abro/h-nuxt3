@@ -2,7 +2,7 @@
   <div class="">
     <m-bread-crumbs :crumbs="breadCrumbs" />
     <h1 class="text-2xl lg:text-3xl font-bold mb-4">
-      <nuxt-icon name="braille" class="text-primary mr-1" /> Все предложения по скидкам
+      <nuxt-icon name="header/braille" class="text-primary mr-1" /> Все предложения по скидкам
     </h1>
     <h2 class="text-xl lg:text-2xl font-bold mb-3">
       Найдите интересующий вас сайт по категории:

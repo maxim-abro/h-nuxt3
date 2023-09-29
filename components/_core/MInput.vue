@@ -21,11 +21,11 @@ import {UnwrapRef} from "vue";
 import {Ref} from "@vue/reactivity";
 
 interface InputType {
-  type: | 'text' | 'email' | 'password' | 'range' | 'search' | 'tel' | 'url' | 'time' | 'week' | 'number' | 'file' | 'date'
-  placeholder: string
-  name: string
-  inputProp: string
-  dark: boolean
+  type?: | 'text' | 'email' | 'password' | 'range' | 'search' | 'tel' | 'url' | 'time' | 'week' | 'number' | 'file' | 'date'
+  placeholder?: string
+  name?: string
+  inputProp?: string
+  dark?: boolean
 }
 
 const props = withDefaults(defineProps<InputType>(), {
