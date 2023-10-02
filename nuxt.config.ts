@@ -217,7 +217,6 @@ export default defineNuxtConfig({
           lastmod: new Date(),
           changefreq: "daily",
           priority: 0.8,
-          gzip: true,
         };
       });
     },
