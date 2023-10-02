@@ -5,49 +5,50 @@
       Промокоды и акции на тему {{ holiday.title }}
     </h1>
     <img
-        :title="holiday.title"
-        loading="lazy"
-        class="w-full mb-8 rounded"
-        :src="`https://za-halyavoi.ru/api/static/holidays/${holiday.image}`"
-        :alt="holiday.title"
+      :title="holiday.title"
+      loading="lazy"
+      class="w-full mb-8 rounded"
+      :src="`https://za-halyavoi.ru/api/static/holidays/${holiday.image}`"
+      :alt="holiday.title"
     />
 
     <p class="mb-8" v-html="holiday.description"></p>
 
     <h2 class="font-bold text-lg mb-4">
-      <nuxt-icon name="fire" class="text-primary" /> {{ holiday.title }} - лучшие
-      промокоды и акции
+      <nuxt-icon name="fire" class="text-primary" /> {{ holiday.title }} -
+      лучшие промокоды и акции
     </h2>
 
     <div class="grid grid-cols-1 xs:grid-cols-2 xl:grid-cols-3 gap-8 mb-8">
       <m-vertical-card
-          v-for="post in holiday.posts"
-          :key="post.uin"
-          :post="post"
-          @like="likePost($event)"
+        v-for="post in holiday.posts"
+        :key="post.uin"
+        :post="post"
+        @like="likePost($event)"
       />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import MBreadCrumbs from '~/components/MBreadCrumbs.vue'
-import MVerticalCard from '~/components/cards/MVerticalCard.vue'
-import {useSeoStore} from "~/store/seo.store";
-import {HolidayType} from "~/types/HolidayType";
-import {Ref} from "@vue/reactivity";
-import {UnwrapRef} from "vue";
-import {Crumb} from "~/types/components/BreadcrumbsType";
+import { Ref, UnwrapRef } from "vue";
+import MBreadCrumbs from "~/components/MBreadCrumbs.vue";
+import MVerticalCard from "~/components/cards/MVerticalCard.vue";
+import { useSeoStore } from "~/store/seo.store";
+import { HolidayType } from "~/types/HolidayType";
+import { Crumb } from "~/types/components/BreadcrumbsType";
 
-const route = useRoute()
-const seo = useSeoStore()
+const route = useRoute();
+const seo = useSeoStore();
 
-const responseHoliday = await $fetch<HolidayType>(`https://za-halyavoi.ru/api/holiday/id/${route.params.id}`)
-const holiday: Ref<UnwrapRef<HolidayType>> = ref(responseHoliday)
+const responseHoliday = await $fetch<HolidayType>(
+  `https://za-halyavoi.ru/api/holiday/id/${route.params.id}`,
+);
+const holiday: Ref<UnwrapRef<HolidayType>> = ref(responseHoliday);
 const breadCrumbs: Ref<UnwrapRef<Crumb[]>> = ref([
-  { link: '/tags', title: 'Теги' },
-  { title: holiday.value.title, link: '' },
-])
+  { link: "/tags", title: "Теги" },
+  { title: holiday.value.title, link: "" },
+]);
 
 async function likePost(uin: string) {
   // todo like
@@ -86,50 +87,50 @@ useHead({
   title: `${holiday.value.title}. Промокоды, скидки и акции для сайтов и интернет-магазинов`,
   meta: [
     {
-      hid: 'description',
-      name: 'description',
+      hid: "description",
+      name: "description",
       content: holiday.value.description.slice(0, 346),
     },
     {
-      hid: 'keywords',
-      name: 'keywords',
+      hid: "keywords",
+      name: "keywords",
       content: `сайты, промокоды, скидки, акции, магазины, акция, промокод, скидка, ${holiday.value.title}`,
     },
     {
-      property: 'og:title',
+      property: "og:title",
       content: `${holiday.value.title}. Промокоды, скидки и акции для сайтов и интернет-магазинов`,
     },
     {
-      property: 'og:description',
+      property: "og:description",
       content: holiday.value.description,
     },
     {
-      property: 'og:url',
+      property: "og:url",
       content: `https://za-halyavoi.ru${route.fullPath}`,
     },
     {
-      property: 'og:image',
-      content: 'https://za-halyavoi.ru/logo.png',
+      property: "og:image",
+      content: "https://za-halyavoi.ru/logo.png",
     },
     {
-      property: 'og:type',
-      content: 'article',
+      property: "og:type",
+      content: "article",
     },
     {
-      property: 'og:site_name',
-      content: 'за халявой',
+      property: "og:site_name",
+      content: "за халявой",
     },
     {
-      property: 'og:image:url',
-      content: 'https://za-halyavoi.ru/logo.png',
+      property: "og:image:url",
+      content: "https://za-halyavoi.ru/logo.png",
     },
   ],
   link: [
     {
-      rel: 'canonical',
+      rel: "canonical",
       // @ts-ignore
-      href: 'https://za-halyavoi.ru/tags/' + route.params.id,
+      href: "https://za-halyavoi.ru/tags/" + route.params.id,
     },
   ],
-})
+});
 </script>

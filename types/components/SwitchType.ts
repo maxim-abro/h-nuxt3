@@ -1,3 +1,3 @@
 export interface SwitchType {
-  checked: boolean
+  checked: boolean;
 }

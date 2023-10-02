@@ -1,21 +1,20 @@
 <template>
   <div>
     <VitePwaManifest />
-    <NuxtLoadingIndicator/>
+    <NuxtLoadingIndicator />
     <NuxtLayout>
-      <NuxtPage/>
+      <NuxtPage />
     </NuxtLayout>
   </div>
 </template>
 
 <script setup lang="ts">
-import {useAsideStore} from "~/store/aside.store";
-import {useHeaderStore} from "~/store/header.store";
+import { useAsideStore } from "~/store/aside.store";
+import { useHeaderStore } from "~/store/header.store";
 
+const asideStore = useAsideStore();
+const headerStore = useHeaderStore();
 
-const asideStore = useAsideStore()
-const headerStore = useHeaderStore()
-
-await asideStore.getBuild()
-await headerStore.getRandomHoliday()
+await asideStore.getBuild();
+await headerStore.getRandomHoliday();
 </script>

@@ -1,9 +1,9 @@
-import {defineStore, StoreDefinition} from "pinia";
-import {PostType} from "~/types/PostType";
-import axios, {AxiosResponse} from "axios";
+import { defineStore } from "pinia";
+import axios, { AxiosResponse } from "axios";
+import { PostType } from "~/types/PostType";
 
 export const usePopupStore = defineStore({
-  id: 'popup',
+  id: "popup",
   state: () => ({
     openPopup: false as boolean,
     popupData: {} as PostType,
@@ -12,28 +12,30 @@ export const usePopupStore = defineStore({
   }),
   getters: {},
   actions: {
-    setPopupData(popupData: PostType):void {
-      this.popupData = popupData
+    setPopupData(popupData: PostType): void {
+      this.popupData = popupData;
     },
-    closePopup() :void {
-      this.openPopup = false
+    closePopup(): void {
+      this.openPopup = false;
     },
-    toggleCats():void {
-      this.openCats = !this.openCats
+    toggleCats(): void {
+      this.openCats = !this.openCats;
     },
-    toggleMenu():void {
-      this.openMobileMenu = !this.openMobileMenu
+    toggleMenu(): void {
+      this.openMobileMenu = !this.openMobileMenu;
     },
-    async getPost(uin: string):Promise<PostType|any> {
+    async getPost(uin: string): Promise<PostType | any> {
       try {
-        const resData:AxiosResponse<PostType> = await axios.get(`https://za-halyavoi.ru/api/post/${uin}`)
-        this.setPopupData(resData.data)
-        this.openPopup = true
-        return resData.data
-      } catch (e:any) {
-        console.log(e)
-        return e
+        const resData: AxiosResponse<PostType> = await axios.get(
+          `https://za-halyavoi.ru/api/post/${uin}`,
+        );
+        this.setPopupData(resData.data);
+        this.openPopup = true;
+        return resData.data;
+      } catch (e: any) {
+        console.log(e);
+        return e;
       }
-    }
-  }
-})
+    },
+  },
+});

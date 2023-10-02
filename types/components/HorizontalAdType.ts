@@ -1,4 +1,4 @@
 export interface HorizontalAdType {
-  img: string
-  url: string
+  img: string;
+  url: string;
 }

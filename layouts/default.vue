@@ -12,15 +12,15 @@
         <!--          })-->
         <!--        })</script>-->
 
-        <slot/>
+        <slot />
       </main>
 
       <aside class="w-full lg:w-3/12 mr-0 lg:ml-3">
         <m-aside class="mb-8" />
         <m-popular-aside :popular="aside.popular" class="mb-8" />
         <m-popular-categories-aside
-            :popular-categories="aside.popularCategories"
-            class="mb-8"
+          :popular-categories="aside.popularCategories"
+          class="mb-8"
         />
 
         <!--        &lt;!&ndash; Yandex.RTB R-A-1753947-1 &ndash;&gt;-->
@@ -38,10 +38,10 @@
     <m-popup-coupon />
     <noscript>
       <iframe
-          src="https://www.googletagmanager.com/ns.html?id=GTM-MWZ6V8X"
-          height="0"
-          width="0"
-          style="display: none; visibility: hidden"
+        src="https://www.googletagmanager.com/ns.html?id=GTM-MWZ6V8X"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
       >
       </iframe>
     </noscript>
@@ -49,15 +49,15 @@
 </template>
 
 <script setup lang="ts">
-import MPopupCoupon from '~/components/popups/MPopupCoupon.vue'
-import MPopularAside from '~/components/aside/MPopularAside.vue'
-import MPopularCategoriesAside from '~/components/aside/MPopularCategoriesAside.vue'
-import MFooter from '~/components/MFooter.vue'
-import MHeader from '~/components/header/MHeader.vue'
-import MAside from '~/components/aside/MAside.vue'
-import {useAsideStore} from "~/store/aside.store";
-import {useHeaderStore} from "~/store/header.store";
+import MPopupCoupon from "~/components/popups/MPopupCoupon.vue";
+import MPopularAside from "~/components/aside/MPopularAside.vue";
+import MPopularCategoriesAside from "~/components/aside/MPopularCategoriesAside.vue";
+import MFooter from "~/components/MFooter.vue";
+import MHeader from "~/components/header/MHeader.vue";
+import MAside from "~/components/aside/MAside.vue";
+import { useAsideStore } from "~/store/aside.store";
+import { useHeaderStore } from "~/store/header.store";
 
-const aside = useAsideStore()
-const header = useHeaderStore()
+const aside = useAsideStore();
+const header = useHeaderStore();
 </script>

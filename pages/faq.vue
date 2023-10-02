@@ -5,7 +5,7 @@
     <h1 class="font-bold text-3xl mb-10">Популярные вопросы</h1>
 
     <div
-        class="prose lg:prose-xl prose-stone dark:prose-invert mb-10 max-w-none"
+      class="prose lg:prose-xl prose-stone dark:prose-invert mb-10 max-w-none"
     >
       <h2>Где я нахожусь?</h2>
       <p>
@@ -49,7 +49,7 @@
         Если вы нашли промокод, который еще не введен, пожалуйста, отправьте его
         через
         <nuxt-link class="text-primary" to="/contacts"
-        >форму обратной связи</nuxt-link
+          >форму обратной связи</nuxt-link
         >, и мы обязательно добавим его, если он действителен. В своем сообщении
         укажите, в каких магазинах действует промо-код, срок действия и любые
         другие условия (минимальная стоимость заказа, ограничения по категориям
@@ -79,16 +79,16 @@
         <li>
           Можете подписаться на наши социальные сети
           <a
-              class="text-primary"
-              href="https://vk.com/za_halyavoi"
-              target="_blank"
-          >vk</a
+            class="text-primary"
+            href="https://vk.com/za_halyavoi"
+            target="_blank"
+            >vk</a
           >,
           <a
-              class="text-primary"
-              href="https://t.me/za_halyavoi"
-              target="_blank"
-          >telegram</a
+            class="text-primary"
+            href="https://t.me/za_halyavoi"
+            target="_blank"
+            >telegram</a
           >;
         </li>
         <li>Подписаться на нашу e-mail рассылку.</li>
@@ -98,67 +98,67 @@
 </template>
 
 <script setup lang="ts">
-import {useSeoStore} from "~/store/seo.store";
-import {useRoute} from "vue-router";
-import {Crumb} from "~/types/components/BreadcrumbsType";
+import { useRoute } from "vue-router";
+import { useSeoStore } from "~/store/seo.store";
+import { Crumb } from "~/types/components/BreadcrumbsType";
 
-const seo = useSeoStore()
-const route = useRoute()
+const seo = useSeoStore();
+const route = useRoute();
 
-const breadCrumbs:Crumb[] = [
+const breadCrumbs: Crumb[] = [
   {
-    title: 'Популярные вопросы',
-    link: ''
-  }
-]
+    title: "Популярные вопросы",
+    link: "",
+  },
+];
 
 useHead({
   title: `Популярные вопросы по пользованию сайтом`,
   meta: [
     {
-      hid: 'description',
-      name: 'description',
+      hid: "description",
+      name: "description",
       content: `Популярные вопросы по пользованию сайтом. Свежие промокоды, скидки и акции на ${seo.month} ${seo.year} год, а также эксклюзивные купоны. Бегом za халявой`,
     },
     {
-      hid: 'keywords',
-      name: 'keywords',
+      hid: "keywords",
+      name: "keywords",
       content: `сайты, популярные вопросы, промокоды, скидки, акции, магазины, акция, промокод, скидка, ${seo.month}`,
     },
     {
-      property: 'og:title',
+      property: "og:title",
       content: `Популярные вопросы по пользованию сайтом`,
     },
     {
-      property: 'og:description',
+      property: "og:description",
       content: `Свежие промокоды, скидки и акции на ${seo.month} ${seo.year} год, а также эксклюзивные купоны. Бегом za халявой!`,
     },
     {
-      property: 'og:url',
+      property: "og:url",
       content: `https://za-halyavoi.ru${route.fullPath}`,
     },
     {
-      property: 'og:image',
-      content: 'https://za-halyavoi.ru/za-halyavoi.png',
+      property: "og:image",
+      content: "https://za-halyavoi.ru/za-halyavoi.png",
     },
     {
-      property: 'og:type',
-      content: 'website',
+      property: "og:type",
+      content: "website",
     },
     {
-      property: 'og:site_name',
-      content: 'за халявой',
+      property: "og:site_name",
+      content: "за халявой",
     },
     {
-      property: 'og:image:url',
-      content: 'https://za-halyavoi.ru/logo.png',
+      property: "og:image:url",
+      content: "https://za-halyavoi.ru/logo.png",
     },
   ],
   link: [
     {
-      rel: 'canonical',
-      href: 'https://za-halyavoi.ru/faq',
+      rel: "canonical",
+      href: "https://za-halyavoi.ru/faq",
     },
   ],
-})
+});
 </script>
