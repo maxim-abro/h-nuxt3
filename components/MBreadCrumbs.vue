@@ -1,12 +1,23 @@
 <template>
   <nav class="mb-4">
-    <ol class="flex items-center flex-wrap">
-      <li>
+    <ol
+      itemscope
+      itemtype="https://schema.org/BreadcrumbList"
+      class="flex items-center flex-wrap"
+    >
+      <li
+        itemprop="itemListElement"
+        itemscope
+        itemtype="https://schema.org/ListItem"
+      >
         <NuxtLink
+          itemprop="item"
           class="text-gray-600 dark:text-zinc-200 text-xs md:text-base hover:underline"
           to="/"
-          >Главная</NuxtLink
         >
+          <span itemprop="name">Главная</span>
+          <meta itemprop="position" content="1" />
+        </NuxtLink>
       </li>
 
       <li
