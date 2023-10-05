@@ -117,9 +117,14 @@ export default defineNuxtConfig({
     "nuxt-simple-sitemap",
     "@nuxtjs/color-mode",
     "nuxt-icons",
+    "nuxt-gtag",
     // "@vite-pwa/nuxt",
     // "@nuxt/image",
   ],
+
+  gtag: {
+    id: 'G-V6ZSLDKYV2',
+  },
 
   // image: {
   //   quality: 10,
