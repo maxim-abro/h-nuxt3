@@ -37,6 +37,8 @@ import MVerticalCard from "~/components/cards/MVerticalCard.vue";
 import { useSeoStore } from "~/store/seo.store";
 import { HolidayType } from "~/types/HolidayType";
 import { Crumb } from "~/types/components/BreadcrumbsType";
+import {CookieRef} from "#app";
+import {PostType} from "~/types/PostType";
 
 const route = useRoute();
 const seo = useSeoStore();
@@ -51,36 +53,27 @@ const breadCrumbs: Ref<UnwrapRef<Crumb[]>> = ref([
 ]);
 
 async function likePost(uin: string) {
-  // todo like
-  // // @ts-ignore
-  // const likes = this.$cookies.get('likes')
-  // if (!likes) {
-  //   // @ts-ignore
-  //   await this.$api.get(`/post/like/${uin}`)
-  //   // @ts-ignore
-  //   this.$cookies.set('likes', [uin])
-  //   // @ts-ignore
-  //   holiday.value.posts.forEach((i) => {
-  //     if (i.uin === uin) {
-  //       i.rating = i.rating + 1
-  //     }
-  //   })
-  // } else {
-  //   const findLike = likes.find((i) => i === uin)
-  //   if (!findLike) {
-  //     likes.push(uin)
-  //     // @ts-ignore
-  //     await this.$api.get(`/post/like/${uin}`)
-  //     // @ts-ignore
-  //     this.$cookies.set('likes', likes)
-  //     // @ts-ignore
-  //     holiday.value.posts.forEach((i) => {
-  //       if (i.uin === uin) {
-  //         i.rating = i.rating + 1
-  //       }
-  //     })
-  //   }
-  // }
+  const likes: CookieRef<string[]> = useCookie("likes");
+  if(!likes.value) {
+    await $fetch(`https://za-halyavoi.ru/api/post/${uin}`);
+    likes.value = [uin];
+    holiday.value.posts.forEach((i: PostType) =>{
+      if (i.uin === uin) {
+        i.rating = i.rating + 1;
+      }
+    });
+  } else {
+    const findLike = likes.value.find((i: string) => i===uin);
+    if (!findLike) {
+      likes.value.push(uin);
+      await $fetch(`https://za-halyavoi.ru/api/post/like/${uin}`);
+      holiday.value.posts.forEach((i: PostType) => {
+        if (i.uin === uin) {
+          i.rating = i.rating + 1;
+        }
+      });
+    }
+  }
 }
 
 useHead({

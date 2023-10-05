@@ -199,7 +199,6 @@ watch(
 
 async function likePost(uin: string) {
   const likes: CookieRef<string[]> = useCookie("likes");
-  console.log(likes.value);
   if (!likes.value) {
     await $fetch(`https://za-halyavoi.ru/api/post/like/${uin}`);
     likes.value = [uin];
