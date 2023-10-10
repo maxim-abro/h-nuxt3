@@ -16,7 +16,6 @@
           to="/"
         >
           <span itemprop="name">Главная</span>
-
         </NuxtLink>
       </li>
 
@@ -37,10 +36,9 @@
           v-if="crumb.link"
           class="text-gray-600 dark:text-zinc-200 text-xs md:text-base hover:underline"
           :to="crumb.link"
-          >
-          <span itemprop="name">{{ crumb.title }}</span>
-        </NuxtLink
         >
+          <span itemprop="name">{{ crumb.title }}</span>
+        </NuxtLink>
         <span v-if="!crumb.link" class="text-primary text-xs md:text-base">{{
           crumb.title
         }}</span>

@@ -123,7 +123,7 @@ export default defineNuxtConfig({
   ],
 
   gtag: {
-    id: 'G-V6ZSLDKYV2',
+    id: "G-V6ZSLDKYV2",
   },
 
   // image: {

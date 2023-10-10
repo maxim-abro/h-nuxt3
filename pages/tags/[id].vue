@@ -37,8 +37,8 @@ import MVerticalCard from "~/components/cards/MVerticalCard.vue";
 import { useSeoStore } from "~/store/seo.store";
 import { HolidayType } from "~/types/HolidayType";
 import { Crumb } from "~/types/components/BreadcrumbsType";
-import {CookieRef} from "#app";
-import {PostType} from "~/types/PostType";
+import { CookieRef } from "#app";
+import { PostType } from "~/types/PostType";
 
 const route = useRoute();
 const seo = useSeoStore();
@@ -54,16 +54,16 @@ const breadCrumbs: Ref<UnwrapRef<Crumb[]>> = ref([
 
 async function likePost(uin: string) {
   const likes: CookieRef<string[]> = useCookie("likes");
-  if(!likes.value) {
+  if (!likes.value) {
     await $fetch(`https://za-halyavoi.ru/api/post/${uin}`);
     likes.value = [uin];
-    holiday.value.posts.forEach((i: PostType) =>{
+    holiday.value.posts.forEach((i: PostType) => {
       if (i.uin === uin) {
         i.rating = i.rating + 1;
       }
     });
   } else {
-    const findLike = likes.value.find((i: string) => i===uin);
+    const findLike = likes.value.find((i: string) => i === uin);
     if (!findLike) {
       likes.value.push(uin);
       await $fetch(`https://za-halyavoi.ru/api/post/like/${uin}`);
