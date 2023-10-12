@@ -1,5 +1,5 @@
 <template>
-  <div class="dark:bg-zinc-900">
+  <div class="dark:bg-zinc-900 pt-14 md:pt-0">
     <m-header :holiday="header.holiday" />
     <slot />
     <m-footer />

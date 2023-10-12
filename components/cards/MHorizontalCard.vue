@@ -18,7 +18,7 @@
         <div
           class="mx-auto text-xl w-max px-3 bg-zinc-100 dark:bg-zinc-800 mt-3 dark:text-zinc-200"
         >
-          <button class="group p-0.5" @click="$emit('like', post.uin)">
+          <button class="group p-0.5" @click="emit('like', post.uin)">
             <nuxt-icon
               class="group-hover:text-primary transition-all duration-300 hover:transition-all hover:duration-300"
               name="heart"
@@ -77,6 +77,8 @@ import MButton from "~/components/_core/MButton.vue";
 import { PostType } from "~/types/PostType";
 
 const props = defineProps<{ post: PostType }>();
+
+const emit = defineEmits(["like"]);
 
 function openLink() {
   window.open(`https://za-halyavoi.ru/?coupon=${props.post.uin}`);

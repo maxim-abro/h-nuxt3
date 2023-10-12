@@ -31,7 +31,7 @@
 </template>
 
 <script setup lang="ts">
-import { Ref, UnwrapRef } from "vue";
+import { Ref } from "vue";
 
 definePageMeta({
   layout: "shop",
@@ -49,8 +49,6 @@ const error: Ref<
   | null
   | undefined
 > = useError();
-
-console.log(error.value?.statusMessage);
 
 await useFetch("https://za-halyavoi.ru/api/error", {
   method: "post",

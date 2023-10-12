@@ -11,11 +11,11 @@
 </template>
 
 <script setup lang="ts">
-import { ComputedRef, Ref, computed, ref, UnwrapRef } from "vue";
+import { ComputedRef, computed } from "vue";
 
 interface ButtonType {
   color?: "primary" | string;
-  type?: "button" | "submit" | "input" | string;
+  type?: "button" | "submit" | "reset" | undefined;
   disabled?: boolean;
 }
 
@@ -25,7 +25,7 @@ const props = withDefaults(defineProps<ButtonType>(), {
   disabled: false,
 });
 
-const primary: Ref<UnwrapRef<string>> = ref("");
+defineEmits(["click"]);
 
 const getColor: ComputedRef<string> = computed(() => {
   if (props.color === "primary") {

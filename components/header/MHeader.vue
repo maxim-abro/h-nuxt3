@@ -72,7 +72,9 @@
       <!--      </nuxt-link>-->
     </header>
 
-    <nav class="bg-second relative dark:bg-zinc-800 text-primary hidden md:block head-nav w-full">
+    <nav
+      class="bg-second relative dark:bg-zinc-800 text-primary hidden md:block head-nav w-full"
+    >
       <div class="container">
         <ul class="flex justify-center items-center">
           <li>
@@ -124,7 +126,6 @@
       </div>
       <m-header-categories />
     </nav>
-
 
     <mobile-menu />
   </div>
@@ -186,17 +187,25 @@ watch(
 );
 
 onMounted(() => {
-  window.addEventListener('scroll', (event: any) => {
-    const scrollTop:number = window.pageYOffset;
-    const header: HTMLHeadingElement | null = document.querySelector('.header')
-    let headerNav: HTMLDivElement | null = document.querySelector('.head-nav')
-    console.log(window.pageYOffset)
+  window.addEventListener("scroll", () => {
+    const scrollTop: number = window.pageYOffset;
+    const header: HTMLHeadingElement | null = document.querySelector(".header");
+    const headerNav: HTMLDivElement | null =
+      document.querySelector(".head-nav");
     if (header && headerNav) {
-      scrollTop >= header.offsetHeight + headerNav.offsetHeight + 30 ? headerNav.classList.add('is-sticky') :  headerNav.classList.remove('is-sticky')
-      scrollTop >= header.offsetHeight + headerNav.offsetHeight + 30 ? headerNav.classList.add('backdrop-blur') :  headerNav.classList.remove('backdrop-blur')
-      scrollTop >= header.offsetHeight + headerNav.offsetHeight + 30 ? headerNav.classList.add('bg-second/[80%]') : headerNav.classList.remove('bg-second/[80%]')
-      scrollTop >= header.offsetHeight + headerNav.offsetHeight + 30 ? headerNav.classList.add('dark:bg-zinc-800/50') : headerNav.classList.remove('dark:bg-zinc-800/10')
+      scrollTop >= header.offsetHeight + headerNav.offsetHeight + 30
+        ? headerNav.classList.add("is-sticky")
+        : headerNav.classList.remove("is-sticky");
+      scrollTop >= header.offsetHeight + headerNav.offsetHeight + 30
+        ? headerNav.classList.add("backdrop-blur")
+        : headerNav.classList.remove("backdrop-blur");
+      scrollTop >= header.offsetHeight + headerNav.offsetHeight + 30
+        ? headerNav.classList.add("bg-second/[80%]")
+        : headerNav.classList.remove("bg-second/[80%]");
+      scrollTop >= header.offsetHeight + headerNav.offsetHeight + 30
+        ? headerNav.classList.add("dark:bg-zinc-800/50")
+        : headerNav.classList.remove("dark:bg-zinc-800/10");
     }
-  })
-})
+  });
+});
 </script>

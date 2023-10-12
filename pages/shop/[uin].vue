@@ -1,5 +1,5 @@
 <template>
-  <div class="container flex flex-col lg:flex-row mt-10">
+  <div class="container flex flex-col lg:flex-row pt-10">
     <main class="lg:w-9/12 mb-10 lg:mb-0 lg:mr-4">
       <m-bread-crumbs :crumbs="breadCrumbs" />
       <h1 class="text-2xl font-bold mb-8 dark:text-zinc-200">
@@ -115,7 +115,6 @@ const breadCrumbs: Ref<UnwrapRef<Crumb[]>> = ref([
 
 const shopData: Ref<UnwrapRef<ShopType>> = ref(responseShop);
 const posts: Ref<UnwrapRef<PostType[]>> = ref(responsePosts.rows);
-const count: Ref<UnwrapRef<number>> = ref(responsePosts.count);
 const seo: Ref<UnwrapRef<SeoType>> = ref({
   title: responseShop.title as string,
   description: responseShop.description as string,

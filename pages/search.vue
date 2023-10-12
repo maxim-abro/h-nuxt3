@@ -41,7 +41,6 @@ import { Crumb } from "~/types/components/BreadcrumbsType";
 import { useSeoStore } from "~/store/seo.store";
 
 const route = useRoute();
-const router = useRouter();
 const seo = useSeoStore();
 
 const response = await $fetch<ShopsSearchType[]>(

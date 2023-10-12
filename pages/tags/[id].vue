@@ -31,13 +31,12 @@
 </template>
 
 <script setup lang="ts">
+import { CookieRef } from "#app";
 import { Ref, UnwrapRef } from "vue";
 import MBreadCrumbs from "~/components/MBreadCrumbs.vue";
 import MVerticalCard from "~/components/cards/MVerticalCard.vue";
-import { useSeoStore } from "~/store/seo.store";
 import { HolidayType } from "~/types/HolidayType";
 import { Crumb } from "~/types/components/BreadcrumbsType";
-import { CookieRef } from "#app";
 import { PostType } from "~/types/PostType";
 
 const route = useRoute();

@@ -51,12 +51,10 @@
 import { computed, reactive, ComputedRef } from "vue";
 import { CookieRef, useCookie } from "#app";
 import MBreadCrumbs from "~/components/MBreadCrumbs.vue";
-import { useSeoStore } from "~/store/seo.store";
 import { BlogTagsType, BlogType } from "~/types/BlogType";
 import { Crumb } from "~/types/components/BreadcrumbsType";
 
 const route = useRoute();
-const seo = useSeoStore();
 
 const response = await $fetch<BlogType>(
   `https://za-halyavoi.ru/api/blog/id/${route.params.lat_title}`,

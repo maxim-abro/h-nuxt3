@@ -36,11 +36,6 @@ function submitSearch() {
   searchQuery.value = "";
   emit("close");
 }
-function blurInput() {
-  setTimeout(() => {
-    searchShops.value = [];
-  }, 500);
-}
 
 watch(
   () => searchQuery.value,

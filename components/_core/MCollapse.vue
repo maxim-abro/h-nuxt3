@@ -59,9 +59,6 @@ watch(
     emit("trigger", data.showContent);
   },
 );
-const close = () => {
-  data.showContent = false;
-};
 </script>
 
 <style scoped>

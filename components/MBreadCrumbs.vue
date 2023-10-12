@@ -32,8 +32,8 @@
           /
         </span>
         <NuxtLink
-          itemprop="item"
           v-if="crumb.link"
+          itemprop="item"
           class="text-gray-600 dark:text-zinc-200 text-xs md:text-base hover:underline"
           :to="crumb.link"
         >

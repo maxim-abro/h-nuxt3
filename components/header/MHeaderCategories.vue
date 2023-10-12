@@ -37,8 +37,6 @@
 <script setup lang="ts">
 import { ComputedRef, Ref, computed, UnwrapRef } from "vue";
 import { RouteLocationRaw, useRouter } from "vue-router";
-import { FetchResponse } from "ofetch";
-import { _AsyncData } from "#app/composables/asyncData";
 import { usePopupStore } from "~/store/popup.store";
 import { CategoryType } from "~/types/CategoryType";
 

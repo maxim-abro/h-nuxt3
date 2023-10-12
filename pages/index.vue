@@ -97,7 +97,7 @@
 </template>
 
 <script setup lang="ts">
-import { CookieRef, useAsyncData, useCookie } from "#app";
+import { CookieRef, useCookie } from "#app";
 import { LocationQueryValue, useRoute, useRouter } from "vue-router";
 import { Ref, UnwrapRef } from "vue";
 import MPagination from "~/components/MPagination.vue";
