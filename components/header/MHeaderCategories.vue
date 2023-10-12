@@ -9,6 +9,7 @@
   >
     <div
       v-if="popupStore.openCats"
+      v-click-outside="popupStore.toggleCats"
       class="bg-zinc-50 dark:bg-zinc-900 shadow-xl p-8 absolute top-full left-1/2 -translate-x-1/2 z-50"
     >
       <div class="grid grid-cols-3">

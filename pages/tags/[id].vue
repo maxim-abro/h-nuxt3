@@ -41,7 +41,6 @@ import { CookieRef } from "#app";
 import { PostType } from "~/types/PostType";
 
 const route = useRoute();
-const seo = useSeoStore();
 
 const responseHoliday = await $fetch<HolidayType>(
   `https://za-halyavoi.ru/api/holiday/id/${route.params.id}`,
