@@ -8,7 +8,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="js">
 import { useAsideStore } from "~/store/aside.store";
 import { useHeaderStore } from "~/store/header.store";
 

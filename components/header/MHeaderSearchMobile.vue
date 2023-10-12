@@ -1,6 +1,6 @@
 <template>
   <form
-    class="absolute p-3 left-0 w-full bg-second z-50"
+    class="absolute p-3 left-0 w-full bg-second z-30 slide-down"
     @submit.prevent="submitSearch"
   >
     <div class="relative">

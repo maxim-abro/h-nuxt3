@@ -1,7 +1,7 @@
 <template>
-  <div class="relative dark:bg-zinc-900">
+  <div class="relative dark:bg-zinc-900 z-40">
     <header
-      class="mb-3 pt-2 md:py-2 shadow-xl relative md:shadow-none dark:bg-zinc-900"
+      class="mb-3 pt-2 md:py-2 shadow-xl bg-white/25 md:bg-white dark:bg-zinc-900/75 backdrop-blur md:backdrop-blur-0 fixed md:static top-0 left-0 w-full md:shadow-none md:dark:bg-zinc-900 header"
     >
       <div class="container flex justify-between items-center">
         <button
@@ -66,19 +66,18 @@
         v-if="openSearchMobile"
         @close="openSearchMobile = false"
       />
-      <mobile-menu />
 
       <!--      <nuxt-link class="p-3 inline-block md:hidden bg-second text-white w-full sign-wrap-3" to="/tags/23-fevralya">-->
       <!--        <span>23 февраля</span>-->
       <!--      </nuxt-link>-->
     </header>
 
-    <nav class="bg-second dark:bg-zinc-800 text-primary hidden md:block">
+    <nav class="bg-second relative dark:bg-zinc-800 text-primary hidden md:block head-nav w-full">
       <div class="container">
         <ul class="flex justify-center items-center">
           <li>
             <nuxt-link
-              class="p-3 inline-block bg-second dark:bg-zinc-800 hover:bg-zinc-700 dark:hover:bg-zinc-700"
+              class="p-3 inline-block hover:bg-zinc-700 dark:hover:bg-zinc-700"
               to="/"
             >
               <nuxt-icon name="header/home" />
@@ -87,7 +86,7 @@
           </li>
           <li>
             <button
-              class="p-3 inline-block bg-second dark:bg-zinc-800 hover:bg-zinc-700 dark:hover:bg-zinc-700"
+              class="p-3 inline-block hover:bg-zinc-700 dark:hover:bg-zinc-700"
               href="#"
               @click="popup.toggleCats"
             >
@@ -97,7 +96,7 @@
           </li>
           <li>
             <nuxt-link
-              class="p-3 inline-block bg-second dark:bg-zinc-800 hover:bg-zinc-700 dark:hover:bg-zinc-700"
+              class="p-3 inline-block hover:bg-zinc-700 dark:hover:bg-zinc-700"
               to="/alphabet"
             >
               <nuxt-icon name="header/arrow-down-a-z" />
@@ -106,7 +105,7 @@
           </li>
           <li>
             <nuxt-link
-              class="p-3 inline-block bg-second dark:bg-zinc-800 hover:bg-zinc-700 dark:hover:bg-zinc-700"
+              class="p-3 inline-block hover:bg-zinc-700 dark:hover:bg-zinc-700"
               to="/blog"
             >
               <nuxt-icon name="header/newspaper" />
@@ -115,7 +114,7 @@
           </li>
           <li>
             <nuxt-link
-              class="p-3 inline-block bg-second dark:bg-zinc-800 text-white hover:bg-zinc-700 dark:hover:bg-zinc-700"
+              class="p-3 inline-block text-white hover:bg-zinc-700 dark:hover:bg-zinc-700"
               :to="`/tags/${holiday.lat_title}`"
             >
               <span>{{ holiday.title }}</span>
@@ -123,9 +122,11 @@
           </li>
         </ul>
       </div>
+      <m-header-categories />
     </nav>
 
-    <m-header-categories />
+
+    <mobile-menu />
   </div>
 </template>
 
@@ -183,4 +184,19 @@ watch(
     }
   }, 1000),
 );
+
+onMounted(() => {
+  window.addEventListener('scroll', (event: any) => {
+    const scrollTop:number = window.pageYOffset;
+    const header: HTMLHeadingElement | null = document.querySelector('.header')
+    let headerNav: HTMLDivElement | null = document.querySelector('.head-nav')
+    console.log(window.pageYOffset)
+    if (header && headerNav) {
+      scrollTop >= header.offsetHeight + headerNav.offsetHeight + 30 ? headerNav.classList.add('is-sticky') :  headerNav.classList.remove('is-sticky')
+      scrollTop >= header.offsetHeight + headerNav.offsetHeight + 30 ? headerNav.classList.add('backdrop-blur') :  headerNav.classList.remove('backdrop-blur')
+      scrollTop >= header.offsetHeight + headerNav.offsetHeight + 30 ? headerNav.classList.add('bg-second/[80%]') : headerNav.classList.remove('bg-second/[80%]')
+      scrollTop >= header.offsetHeight + headerNav.offsetHeight + 30 ? headerNav.classList.add('dark:bg-zinc-800/50') : headerNav.classList.remove('dark:bg-zinc-800/10')
+    }
+  })
+})
 </script>
