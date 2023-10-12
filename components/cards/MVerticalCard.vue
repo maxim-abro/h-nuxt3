@@ -34,14 +34,14 @@
       {{ post.title }}
     </div>
 
-    <router-link
+    <nuxt-link
       v-if="post.shop"
       :to="`/shop/${post.shop.lat_title}`"
       class="text-sm block mb-3 text-zinc-400 hover:text-primary transition-all duration-300 hover:transition-all hover:duration-300"
     >
       <nuxt-icon name="check" class="text-primary" /> Все промокоды
       {{ post.shop.title }}
-    </router-link>
+    </nuxt-link>
 
     <m-button
       class="block text-center mb-3 w-full font-medium text-xl py-1"

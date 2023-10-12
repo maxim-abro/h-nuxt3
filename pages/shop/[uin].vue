@@ -33,6 +33,7 @@
         <m-horizontal-card
           v-for="post of recommended"
           :key="post.uin"
+          show-shop
           :post="post"
           @like="likePost($event)"
         />
@@ -48,10 +49,15 @@
     </main>
 
     <aside class="lg:w-3/12 mb-10 lg:mb-0 lg:ml-4">
-      <div class="lg:sticky lg:top-4">
+      <div class="">
         <shop-aside :data="shopData" class="mb-10" />
 
-        <m-popular-aside :popular="aside.popular" />
+        <m-popular-aside :popular="aside.popular" class="mb-10" />
+
+        <m-popular-categories-aside
+          :popular-categories="aside.popularCategories"
+          class="mb-8 dark:text-white"
+        />
       </div>
     </aside>
   </div>
@@ -69,6 +75,7 @@ import { ShopType } from "~/types/ShopType";
 import { PostType } from "~/types/PostType";
 import { Crumb } from "~/types/components/BreadcrumbsType";
 import { useAsideStore } from "~/store/aside.store";
+import MPopularCategoriesAside from "~/components/aside/MPopularCategoriesAside.vue";
 
 interface SeoType {
   title: string;

@@ -50,7 +50,7 @@ const error: Ref<
   | undefined
 > = useError();
 
-await useFetch("https://za-halyavoi.ru/api/error", {
+await $fetch("https://za-halyavoi.ru/api/error", {
   method: "post",
   body: {
     title: error.value?.message,

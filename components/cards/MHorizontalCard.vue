@@ -36,6 +36,14 @@
         >
           {{ post.title }}
         </h2>
+        <nuxt-link
+          v-if="props.showShop"
+          class="text-sm block mb-3 text-zinc-400 hover:text-primary transition-all duration-300 hover:transition-all hover:duration-300"
+          :to="`/shop/${post.shop.lat_title}`"
+        >
+          <nuxt-icon name="check" class="text-primary" />
+          {{ post.shop.title }}</nuxt-link
+        >
         <button
           class="text-zinc-400 mx-auto hover:text-primary transition-all duration-300 hover:transition-all hover:duration-300"
         >
@@ -76,7 +84,7 @@
 import MButton from "~/components/_core/MButton.vue";
 import { PostType } from "~/types/PostType";
 
-const props = defineProps<{ post: PostType }>();
+const props = defineProps<{ post: PostType; showShop: boolean }>();
 
 const emit = defineEmits(["like"]);
 
