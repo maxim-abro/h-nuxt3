@@ -52,15 +52,13 @@ const error: Ref<
 
 console.log(error.value?.statusMessage);
 
-onMounted(async () => {
-  await useFetch("https://za-halyavoi.ru/api/error", {
-    method: "post",
-    body: {
-      title: error.value?.message,
-      code: error.value?.statusCode,
-      date: new Date(),
-      url: error.value?.url,
-    },
-  });
+await useFetch("https://za-halyavoi.ru/api/error", {
+  method: "post",
+  body: {
+    title: error.value?.message,
+    code: error.value?.statusCode,
+    date: new Date(),
+    url: error.value?.url,
+  },
 });
 </script>
