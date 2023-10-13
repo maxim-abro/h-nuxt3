@@ -73,7 +73,7 @@
     </header>
 
     <nav
-      class="bg-second relative dark:bg-zinc-800 text-primary hidden md:block head-nav w-full"
+      class="bg-second relative dark:bg-zinc-800 text-primary hidden md:block head-nav w-full -z-10"
     >
       <div class="container">
         <ul class="flex justify-center items-center">
