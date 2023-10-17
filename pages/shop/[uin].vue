@@ -76,6 +76,7 @@ import { PostType } from "~/types/PostType";
 import { Crumb } from "~/types/components/BreadcrumbsType";
 import { useAsideStore } from "~/store/aside.store";
 import MPopularCategoriesAside from "~/components/aside/MPopularCategoriesAside.vue";
+import { definePageMeta } from "#imports";
 
 interface SeoType {
   title: string;

@@ -84,7 +84,7 @@
 import MButton from "~/components/_core/MButton.vue";
 import { PostType } from "~/types/PostType";
 
-const props = defineProps<{ post: PostType; showShop: boolean }>();
+const props = defineProps<{ post: PostType; showShop?: boolean }>();
 
 const emit = defineEmits(["like"]);
 
