@@ -83,7 +83,7 @@ const blog = reactive({
   ] as Crumb[],
 });
 
-const tagsList: ComputedRef<string[]> = computed(() => {
+const tagsList = computed<string[]>(() => {
   return blog.blog_tags.map((i) => i.title);
 });
 async function likeBlog(latTitle: string): Promise<void> {

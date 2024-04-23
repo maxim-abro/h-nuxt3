@@ -137,7 +137,7 @@ const seo = useSeoStore();
 
 const response = await $fetch<ShopType[]>("https://za-halyavoi.ru/api/shop");
 
-const shops: Ref<UnwrapRef<ShopType[]>> = ref(response);
+const shops = ref<ShopType[]>(response);
 
 const engAlphabet: string[] = [
   "a",
@@ -200,13 +200,13 @@ const ruAlphabet: string[] = [
   "я",
 ];
 
-const filterBySymbol: ComputedRef<ShopType[]> = computed(() => {
+const filterBySymbol = computed<ShopType[]>(() => {
   const reg = /[^A-Za-z0-9А-Яа-яЁё]+/gi;
   return shops.value.filter((i) => {
     return reg.test(i.title[0]);
   });
 });
-const filterByNumber: ComputedRef<ShopType[]> = computed(() => {
+const filterByNumber = computed<ShopType[]>(() => {
   const reg = /^[0-9]+/gi;
   return shops.value.filter((i) => {
     return reg.test(i.title);

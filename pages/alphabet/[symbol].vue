@@ -150,7 +150,7 @@ const ruAlphabet: string[] = [
   "я",
 ];
 
-const titlePage: ComputedRef<string | string[]> = computed(() => {
+const titlePage = computed<string | string[]>(() => {
   if (route.params.symbol === "symbol") {
     return "символ";
   } else if (route.params.symbol === "0") {

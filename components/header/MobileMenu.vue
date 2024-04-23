@@ -119,6 +119,7 @@ import { Ref, UnwrapRef } from "vue";
 import { usePopupStore } from "~/store/popup.store";
 import { useAsideStore } from "~/store/aside.store";
 import { useColorMode } from "#imports";
+import {bool} from "yup";
 
 const router = useRouter();
 const popup = usePopupStore();
@@ -126,8 +127,8 @@ const aside = useAsideStore();
 
 const colorMode = useColorMode();
 
-const isOpenCategories: Ref<UnwrapRef<boolean>> = ref(false);
-const isOpenPopular: Ref<UnwrapRef<boolean>> = ref(false);
+const isOpenCategories = ref<boolean>(false);
+const isOpenPopular = ref<boolean>(false);
 
 function clickLink(url: string) {
   popup.toggleMenu();

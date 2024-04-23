@@ -61,7 +61,7 @@ const responseShop = await $fetch<ShopType>(
   `https://za-halyavoi.ru/api/shop/${route.params.uin}`,
 );
 
-const breadCrumbs: Ref<UnwrapRef<Crumb[]>> = ref([
+const breadCrumbs = ref<Crumb[]>([
   { link: "/categories", title: "Категории сайтов" },
   {
     link: `/categories/${responseShop.category.lat_title}`,
@@ -70,8 +70,8 @@ const breadCrumbs: Ref<UnwrapRef<Crumb[]>> = ref([
   { link: `/shop/${route.params.uin}`, title: responseShop.title },
   { title: "Добавление купона", link: "" },
 ]);
-const shop: Ref<UnwrapRef<ShopType>> = ref(responseShop);
-const seo: Ref<UnwrapRef<SeoType>> = ref({
+const shop = ref<ShopType>(responseShop);
+const seo = ref<SeoType>({
   title: responseShop.title,
   description: responseShop.description,
 });

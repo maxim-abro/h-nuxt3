@@ -91,9 +91,7 @@ const route = useRoute();
 const seoStore = useSeoStore();
 const aside = useAsideStore();
 
-const page: Ref<UnwrapRef<string | number | LocationQueryValue[]>> = ref(
-  route.query.page || 1,
-);
+const page = ref<string | number | LocationQueryValue[]>(route.query.page || 1);
 
 const responseShop = await $fetch<ShopType>(
   `https://za-halyavoi.ru/api/shop/${route.params.uin}`,
@@ -111,7 +109,7 @@ const responseRecommended = await $fetch<PostType[]>(
     },
   },
 );
-const breadCrumbs: Ref<UnwrapRef<Crumb[]>> = ref([
+const breadCrumbs = ref<Crumb[]>([
   { link: "/categories", title: "Категории сайтов" },
   {
     link: `/categories/${responseShop.category.lat_title}`,
@@ -121,13 +119,13 @@ const breadCrumbs: Ref<UnwrapRef<Crumb[]>> = ref([
 ]);
 /// /////////////////////////////////////////////////
 
-const shopData: Ref<UnwrapRef<ShopType>> = ref(responseShop);
-const posts: Ref<UnwrapRef<PostType[]>> = ref(responsePosts.rows);
-const seo: Ref<UnwrapRef<SeoType>> = ref({
+const shopData = ref<ShopType>(responseShop);
+const posts = ref<PostType[]>(responsePosts.rows);
+const seo = ref<SeoType>({
   title: responseShop.title as string,
   description: responseShop.description as string,
 });
-const recommended: Ref<UnwrapRef<PostType[]>> = ref(responseRecommended);
+const recommended = ref<PostType[]>(responseRecommended);
 
 function likePost(uin: string) {
   // todo add cookies like

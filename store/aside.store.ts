@@ -18,7 +18,7 @@ export const useAsideStore = defineStore({
     },
     async getPopularPosts(): Promise<void> {
       try {
-        const resData: AxiosResponse<object> = await axios.get(
+        const resData = await axios.get<object>(
           "https://za-halyavoi.ru/api/popularshops",
         );
         this.setPopular(resData.data);
@@ -28,7 +28,7 @@ export const useAsideStore = defineStore({
     },
     async getPopularCategories(): Promise<void> {
       try {
-        const resData: AxiosResponse<PopularCategoriesType[]> = await axios.get(
+        const resData = await axios.get<PopularCategoriesType[]>(
           "https://za-halyavoi.ru/api/category/popular",
         );
         this.setPopularCategories(resData.data);

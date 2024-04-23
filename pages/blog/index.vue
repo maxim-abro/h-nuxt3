@@ -59,9 +59,9 @@ const seo = useSeoStore();
 const response = await $fetch<BlogType[]>(
   "https://za-halyavoi.ru/api/blog/all",
 );
-const blogs: Ref<UnwrapRef<BlogType[]>> = ref(response);
+const blogs = ref<BlogType[]>(response);
 
-const breadCrumbs: Ref<UnwrapRef<Crumb[]>> = ref([
+const breadCrumbs = ref<Crumb[]>([
   {
     title: "Блог",
     link: "",

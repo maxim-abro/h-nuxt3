@@ -43,7 +43,7 @@ import { CategoryType } from "~/types/CategoryType";
 const router = useRouter();
 const popupStore = usePopupStore();
 
-const categories: Ref<UnwrapRef<CategoryType[]>> = ref([]);
+const categories = ref<CategoryType[]>([]);
 
 onMounted(async () => {
   categories.value = await $fetch<CategoryType[]>(
@@ -51,7 +51,7 @@ onMounted(async () => {
   );
 });
 
-const getCategories: ComputedRef<CategoryType[]> = computed(() =>
+const getCategories = computed<CategoryType[]>(() =>
   categories.value.slice(0, 11),
 );
 

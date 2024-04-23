@@ -62,5 +62,5 @@ import { ShopType } from "~/types/ShopType";
 
 defineProps<{ data: ShopType }>();
 
-const openInfo: Ref<UnwrapRef<boolean>> = ref(false);
+const openInfo = ref<boolean>(false);
 </script>

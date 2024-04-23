@@ -110,13 +110,13 @@ interface TypeForm {
   name: string;
 }
 
-const form: Ref<UnwrapRef<TypeForm>> = ref({
+const form: Ref = ref<TypeForm>({
   email: "",
   name: "",
 });
 
-const error: Ref<UnwrapRef<string>> = ref("");
-const disabledForm: Ref<UnwrapRef<boolean>> = ref(false);
+const error = ref<string>("");
+const disabledForm: Ref = ref<boolean>(false);
 
 async function validateForm(): Promise<boolean> {
   const schema = yup.object().shape({

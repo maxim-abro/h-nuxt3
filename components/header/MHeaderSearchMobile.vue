@@ -27,8 +27,8 @@ const router = useRouter();
 
 const emit = defineEmits(["close"]);
 
-const searchQuery: Ref<UnwrapRef<string>> = ref("");
-const searchShops: Ref<UnwrapRef<ShopsSearchType[]>> = ref([]);
+const searchQuery = ref<string>("");
+const searchShops = ref<ShopsSearchType[]>([]);
 
 function submitSearch() {
   router.push(`/search?q=${searchQuery.value}`);

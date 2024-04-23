@@ -49,5 +49,5 @@ const props = withDefaults(defineProps<InputType>(), {
 
 defineEmits(["update:modelValue", "blur", "change"]);
 
-const inputData: Ref<UnwrapRef<string>> = ref(props.inputProp);
+const inputData = ref<string>(props.inputProp);
 </script>

@@ -27,7 +27,7 @@ const props = withDefaults(defineProps<ButtonType>(), {
 
 defineEmits(["click"]);
 
-const getColor: ComputedRef<string> = computed(() => {
+const getColor = computed<string>(() => {
   if (props.color === "primary") {
     if (!props.disabled) {
       return "bg-primary hover:bg-primary-300 focus:bg-primary-700";

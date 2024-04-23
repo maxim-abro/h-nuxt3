@@ -143,7 +143,7 @@ import { usePopupStore } from "~/store/popup.store";
 
 const popup = usePopupStore();
 
-const copied: Ref<UnwrapRef<boolean>> = ref(false);
+const copied = ref<boolean>(false);
 
 function copyBuffer(): void {
   navigator.clipboard.writeText(popup.popupData.code);

@@ -37,7 +37,7 @@ const seo = useSeoStore();
 const response = await $fetch<CategoryType[]>(
   "https://za-halyavoi.ru/api/category",
 );
-const categories: Ref<UnwrapRef<CategoryType[]>> = ref(response);
+const categories = ref<CategoryType[]>(response);
 
 const breadCrumbs: Crumb[] = [
   {

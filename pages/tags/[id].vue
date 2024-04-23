@@ -44,8 +44,8 @@ const route = useRoute();
 const responseHoliday = await $fetch<HolidayType>(
   `https://za-halyavoi.ru/api/holiday/id/${route.params.id}`,
 );
-const holiday: Ref<UnwrapRef<HolidayType>> = ref(responseHoliday);
-const breadCrumbs: Ref<UnwrapRef<Crumb[]>> = ref([
+const holiday = ref<HolidayType>(responseHoliday);
+const breadCrumbs = ref<Crumb[]>([
   { link: "/tags", title: "Теги" },
   { title: holiday.value.title, link: "" },
 ]);

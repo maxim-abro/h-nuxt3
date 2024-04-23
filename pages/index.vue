@@ -109,7 +109,7 @@ import { useSeoStore } from "~/store/seo.store";
 const route = useRoute();
 const router = useRouter();
 const seo = useSeoStore();
-const page: Ref<UnwrapRef<number | string | LocationQueryValue[]>> = ref(
+const page = ref<number | string | LocationQueryValue[]>(
   route.query.page || 1,
 );
 
@@ -123,7 +123,7 @@ const pagination = ref({
   total_elements: postRes.count as number,
   total_pages: Math.ceil(postRes.count / 15) as number,
 });
-const posts: Ref<UnwrapRef<PostType[]>> = ref(postRes.rows);
+const posts = ref<PostType[]>(postRes.rows);
 
 useHead({
   title: `Промокоды, скидки и акции для сайтов и интернет-магазинов на ${seo.month} ${seo.year} год`,
@@ -198,7 +198,7 @@ watch(
 );
 
 async function likePost(uin: string) {
-  const likes: CookieRef<string[]> = useCookie("likes");
+  const likes = useCookie<string[]>("likes");
   if (!likes.value) {
     await $fetch(`https://za-halyavoi.ru/api/post/like/${uin}`);
     likes.value = [uin];

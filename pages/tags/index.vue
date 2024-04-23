@@ -27,13 +27,13 @@ const seo = useSeoStore();
 const responseHolidays = await $fetch<HolidayType[]>(
   "https://za-halyavoi.ru/api/holiday/all",
 );
-const breadCrumbs: Ref<UnwrapRef<Crumb[]>> = ref([
+const breadCrumbs = ref<Crumb[]>([
   {
     title: "Теги",
     link: "",
   },
 ]);
-const holidays: Ref<UnwrapRef<HolidayType[]>> = ref(responseHolidays);
+const holidays = ref<HolidayType[]>(responseHolidays);
 
 useHead({
   title: `Сезонные скидки. Промокоды, скидки и акции для сайтов и интернет-магазинов на ${seo.month} ${seo.year} год`,

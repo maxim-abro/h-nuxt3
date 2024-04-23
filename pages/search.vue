@@ -47,11 +47,11 @@ const response = await $fetch<ShopsSearchType[]>(
   encodeURI(`https://za-halyavoi.ru/api/search?q=${route.query.q}`),
 );
 
-const searchData: Ref<UnwrapRef<ShopsSearchType[]>> = ref(response);
-const dataq: Ref<UnwrapRef<LocationQueryValue | LocationQueryValue[]>> = ref(
+const searchData = ref<ShopsSearchType[]>(response);
+const dataq = ref<LocationQueryValue | LocationQueryValue[]>(
   route.query.q,
 );
-const breadCrumbs: Ref<UnwrapRef<Crumb[]>> = ref([
+const breadCrumbs = ref<Crumb[]>([
   {
     title: `Результаты поиска "${route.query.q}"`,
     link: "",
