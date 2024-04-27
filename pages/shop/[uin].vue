@@ -64,8 +64,9 @@
 </template>
 
 <script setup lang="ts">
-import { UnwrapRef, Ref } from "vue";
 import { LocationQueryValue } from "vue-router";
+import shopService from "~/services/shops";
+import postService from "~/services/posts";
 import MBreadCrumbs from "~/components/MBreadCrumbs.vue";
 import MPopularAside from "~/components/aside/MPopularAside.vue";
 import MHorizontalCard from "~/components/cards/MHorizontalCard.vue";
@@ -76,7 +77,7 @@ import { PostType } from "~/types/PostType";
 import { Crumb } from "~/types/components/BreadcrumbsType";
 import { useAsideStore } from "~/store/aside.store";
 import MPopularCategoriesAside from "~/components/aside/MPopularCategoriesAside.vue";
-import { definePageMeta } from "#imports";
+import { ResponsePosts } from "~/types/pages/IndexPageTypes";
 
 interface SeoType {
   title: string;
@@ -93,22 +94,32 @@ const aside = useAsideStore();
 
 const page = ref<string | number | LocationQueryValue[]>(route.query.page || 1);
 
-const responseShop = await $fetch<ShopType>(
-  `https://za-halyavoi.ru/api/shop/${route.params.uin}`,
+// const responseShop = await $fetch<ShopType>(
+//   `https://za-halyavoi.ru/api/shop/${route.params.uin}`,
+// );
+// const responsePosts = await $fetch<{ count: number; rows: PostType[] }>(
+//   `https://za-halyavoi.ru/api/post?shop=${responseShop.uin}&page=${page.value}`,
+// );
+// const responseRecommended = await $fetch<PostType[]>(
+//     "https://za-halyavoi.ru/api/post/recommended",
+//     {
+//       method: "POST",
+//       body: {
+//         categories: responseShop.categories,
+//         shop: responseShop.uin,
+//       },
+//     },
+// );
+const responseShop = await shopService.getShopById<ShopType>(route.params.uin);
+const responsePosts = await postService.getPosts<ResponsePosts>(
+  page.value,
+  responseShop.uin,
 );
-const responsePosts = await $fetch<{ count: number; rows: PostType[] }>(
-  `https://za-halyavoi.ru/api/post?shop=${responseShop.uin}&page=${page.value}`,
-);
-const responseRecommended = await $fetch<PostType[]>(
-  "https://za-halyavoi.ru/api/post/recommended",
-  {
-    method: "POST",
-    body: {
-      categories: responseShop.categories,
-      shop: responseShop.uin,
-    },
-  },
-);
+const responseRecommended = await postService.getRecomendedPosts({
+  categories: responseShop.categories,
+  shop: responseShop.uin,
+});
+
 const breadCrumbs = ref<Crumb[]>([
   { link: "/categories", title: "Категории сайтов" },
   {

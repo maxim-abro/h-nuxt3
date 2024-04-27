@@ -74,20 +74,17 @@
 </template>
 
 <script setup lang="ts">
-import { ComputedRef, Ref, computed, UnwrapRef } from "vue";
+import { computed } from "vue";
+import shopService from "~/services/shops";
 import { useSeoStore } from "~/store/seo.store";
 import { ShopType } from "~/types/ShopType";
 
 const route = useRoute();
 const seo = useSeoStore();
-const response = await $fetch<ShopType[]>(
-  encodeURI(
-    `https://za-halyavoi.ru/api/shop/symbol/${String(
-      route.params.symbol,
-    ).toLowerCase()}`,
-  ),
+const response = await shopService.getShopsBySymbol(
+  String(route.params.symbol),
 );
-const shops: Ref<UnwrapRef<ShopType[]>> = ref(response);
+const shops = ref<ShopType[]>(response);
 
 const engAlphabet: string[] = [
   "a",

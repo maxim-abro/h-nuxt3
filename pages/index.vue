@@ -97,29 +97,23 @@
 </template>
 
 <script setup lang="ts">
-import { CookieRef, useCookie } from "#app";
 import { LocationQueryValue, useRoute, useRouter } from "vue-router";
-import { Ref, UnwrapRef } from "vue";
+import postService from "~/services/posts";
 import MPagination from "~/components/MPagination.vue";
 import MVerticalCard from "~/components/cards/MVerticalCard.vue";
-import { ResponsePosts } from "~/types/pages/IndexPageTypes";
+import type { ResponsePosts } from "~/types/pages/IndexPageTypes";
 import { PostType } from "~/types/PostType";
 import { useSeoStore } from "~/store/seo.store";
 
 const route = useRoute();
 const router = useRouter();
 const seo = useSeoStore();
-const page = ref<number | string | LocationQueryValue[]>(
-  route.query.page || 1,
-);
+const page = ref<number>(Number(route.query.page) || 1);
 
-const postRes = await $fetch<ResponsePosts>(
-  `https://za-halyavoi.ru/api/post?page=${page.value}`,
-);
+const postRes = await postService.getPosts(page.value, "");
 
 const pagination = ref({
-  current_page:
-    route.query.page || (1 as number | string | LocationQueryValue[]),
+  current_page: Number(route.query.page) || (1 as number),
   total_elements: postRes.count as number,
   total_pages: Math.ceil(postRes.count / 15) as number,
 });

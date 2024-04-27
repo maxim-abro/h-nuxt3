@@ -42,7 +42,7 @@
 </template>
 
 <script setup lang="ts">
-import { Ref, UnwrapRef } from "vue";
+import shopService from "~/services/shops";
 import MBreadCrumbs from "~/components/MBreadCrumbs.vue";
 import MInput from "~/components/_core/MInput.vue";
 import { useSeoStore } from "~/store/seo.store";
@@ -57,9 +57,7 @@ interface SeoType {
 const route = useRoute();
 const seoStore = useSeoStore();
 
-const responseShop = await $fetch<ShopType>(
-  `https://za-halyavoi.ru/api/shop/${route.params.uin}`,
-);
+const responseShop = await shopService.getShopById(String(route.params.uin));
 
 const breadCrumbs = ref<Crumb[]>([
   { link: "/categories", title: "Категории сайтов" },

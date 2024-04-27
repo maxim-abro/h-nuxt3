@@ -1,4 +1,4 @@
-import { ShopType } from "~/types/ShopType";
+import type { ShopType } from "~/types/ShopType";
 
 export interface PostType {
   id?: number;

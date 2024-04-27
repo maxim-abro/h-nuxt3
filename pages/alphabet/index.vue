@@ -128,14 +128,15 @@
 </template>
 
 <script setup lang="ts">
-import { ComputedRef, Ref, computed, UnwrapRef } from "vue";
+import { computed } from "vue";
+import shopService from "~/services/shops";
 import { ShopType } from "~/types/ShopType";
 import { useSeoStore } from "~/store/seo.store";
 
 const route = useRoute();
 const seo = useSeoStore();
 
-const response = await $fetch<ShopType[]>("https://za-halyavoi.ru/api/shop");
+const response = await shopService.getAllShops();
 
 const shops = ref<ShopType[]>(response);
 
