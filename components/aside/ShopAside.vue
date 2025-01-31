@@ -6,7 +6,7 @@
       v-if="data.image"
       :title="data.title"
       loading="lazy"
-      :src="`https://za-halyavoi.ru/api/static/${data.image}`"
+      :src="data.image"
       :alt="data.title"
       class="mx-auto w-max-[100%] mb-3"
     />
