@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import { PopularCategoriesType } from "~/types/PopularCategoriesType";
 
 export const useAsideStore = defineStore({

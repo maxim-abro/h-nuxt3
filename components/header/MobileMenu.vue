@@ -115,11 +115,9 @@
 </template>
 
 <script setup lang="ts">
-import { Ref, UnwrapRef } from "vue";
 import { usePopupStore } from "~/store/popup.store";
 import { useAsideStore } from "~/store/aside.store";
 import { useColorMode } from "#imports";
-import {bool} from "yup";
 
 const router = useRouter();
 const popup = usePopupStore();

@@ -48,7 +48,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive, ComputedRef } from "vue";
+import { computed, reactive } from "vue";
 import { CookieRef, useCookie } from "#app";
 import MBreadCrumbs from "~/components/MBreadCrumbs.vue";
 import { BlogTagsType, BlogType } from "~/types/BlogType";

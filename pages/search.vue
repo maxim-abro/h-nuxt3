@@ -33,7 +33,6 @@
 </template>
 
 <script setup lang="ts">
-import { Ref, UnwrapRef } from "vue";
 import { LocationQueryValue } from "vue-router";
 import { ShopsSearchType } from "~/types/components/HeaderSearchType";
 import MBreadCrumbs from "~/components/MBreadCrumbs.vue";

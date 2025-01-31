@@ -32,7 +32,6 @@
 
 <script setup lang="ts">
 import { CookieRef } from "#app";
-import { Ref, UnwrapRef } from "vue";
 import MBreadCrumbs from "~/components/MBreadCrumbs.vue";
 import MVerticalCard from "~/components/cards/MVerticalCard.vue";
 import { HolidayType } from "~/types/HolidayType";

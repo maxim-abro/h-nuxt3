@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { ComputedRef, computed } from "vue";
+import { computed } from "vue";
 
 interface ButtonType {
   color?: "primary" | string;

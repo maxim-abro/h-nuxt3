@@ -138,7 +138,6 @@
 </template>
 
 <script setup lang="ts">
-import { UnwrapRef, Ref } from "vue";
 import { usePopupStore } from "~/store/popup.store";
 
 const popup = usePopupStore();

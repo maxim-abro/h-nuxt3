@@ -18,7 +18,6 @@
 
 <script setup lang="ts">
 import _ from "lodash";
-import { Ref, UnwrapRef } from "vue";
 import MInput from "~/components/_core/MInput.vue";
 import MHeaderSearch from "~/components/header/MHeaderSearch.vue";
 import { ShopsSearchType } from "~/types/components/HeaderSearchType";

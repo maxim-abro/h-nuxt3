@@ -101,7 +101,6 @@
 
 <script setup lang="ts">
 import * as yup from "yup";
-import { Ref, UnwrapRef } from "vue";
 import MInput from "~/components/_core/MInput.vue";
 import MButton from "~/components/_core/MButton.vue";
 
@@ -110,13 +109,13 @@ interface TypeForm {
   name: string;
 }
 
-const form: Ref = ref<TypeForm>({
+const form = ref<TypeForm>({
   email: "",
   name: "",
 });
 
 const error = ref<string>("");
-const disabledForm: Ref = ref<boolean>(false);
+const disabledForm = ref<boolean>(false);
 
 async function validateForm(): Promise<boolean> {
   const schema = yup.object().shape({

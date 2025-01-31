@@ -33,7 +33,7 @@ export const usePopupStore = defineStore({
         this.openPopup = true;
         return resData.data;
       } catch (e: any) {
-        console.log(e);
+        console.error(e);
         return e;
       }
     },

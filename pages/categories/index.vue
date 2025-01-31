@@ -25,7 +25,6 @@
 </template>
 
 <script setup lang="ts">
-import { Ref, UnwrapRef } from "vue";
 import MBreadCrumbs from "~/components/MBreadCrumbs.vue";
 import { useSeoStore } from "~/store/seo.store";
 import { CategoryType } from "~/types/CategoryType";

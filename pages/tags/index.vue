@@ -15,7 +15,6 @@
 </template>
 
 <script setup lang="ts">
-import { Ref, UnwrapRef } from "vue";
 import MBreadCrumbs from "~/components/MBreadCrumbs.vue";
 import { HolidayType } from "~/types/HolidayType";
 import { Crumb } from "~/types/components/BreadcrumbsType";
