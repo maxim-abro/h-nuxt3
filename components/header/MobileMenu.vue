@@ -82,7 +82,7 @@
                 <img
                   :title="shop.shop.title"
                   loading="lazy"
-                  :src="`https://za-halyavoi.ru/api/static/${shop.shop.image}`"
+                  :src="shop.shop.image"
                   :alt="shop.shop.title"
                 />
               </a>

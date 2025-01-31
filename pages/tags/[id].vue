@@ -8,7 +8,7 @@
       :title="holiday.title"
       loading="lazy"
       class="w-full mb-8 rounded"
-      :src="`https://za-halyavoi.ru/api/static/holidays/${holiday.image}`"
+      :src="holiday.image"
       :alt="holiday.title"
     />
 

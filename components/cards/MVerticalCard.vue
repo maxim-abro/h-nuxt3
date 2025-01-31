@@ -7,7 +7,7 @@
       v-if="post.shop"
       :title="post.shop.title"
       loading="lazy"
-      :src="`https://za-halyavoi.ru/api/static/${post.shop.image}`"
+      :src="post.shop.image"
       class="mx-auto h-[59px] cursor-pointer"
       :alt="post.shop.title"
       @click="openLink"

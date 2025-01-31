@@ -10,7 +10,7 @@
         <img
           :title="post.shop.title"
           loading="lazy"
-          :src="`https://za-halyavoi.ru/api/static/${post.shop.image}`"
+          :src="post.shop.image"
           alt="логотип магазина"
           class="mx-auto w-2/3 sm:w-full cursor-pointer"
           @click="openLink"

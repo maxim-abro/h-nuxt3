@@ -30,7 +30,7 @@
     </div>
     <img
       :title="blog.title"
-      :src="`https://za-halyavoi.ru/api/static${blog.preview}`"
+      :src="blog.preview"
       alt=""
       class="mb-8"
     />
@@ -129,7 +129,7 @@ useHead({
     },
     {
       property: "og:image",
-      content: "https://za-halyavoi.ru/api/static" + blog.preview,
+      content: blog.preview,
     },
     {
       property: "og:type",
@@ -141,7 +141,7 @@ useHead({
     },
     {
       property: "og:image:url",
-      content: "https://za-halyavoi.ru/api/static" + blog.preview,
+      content: blog.preview,
     },
   ],
   link: [

@@ -12,7 +12,7 @@
         <nuxt-link :to="`/blog/${blog.lat_title}`"
           ><img
             class="mb-4 rounded-t cursor-pointer"
-            :src="`https://za-halyavoi.ru/api/static${blog.preview}`"
+            :src="blog.preview"
             alt=""
         /></nuxt-link>
         <div class="p-2">

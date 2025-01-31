@@ -17,7 +17,7 @@
         <img
           :title="i.shop.title"
           loading="lazy"
-          :src="`https://za-halyavoi.ru/api/static/${i.shop.image}`"
+          :src="i.shop.image"
           :alt="i.shop.title"
           class="w-full"
         />

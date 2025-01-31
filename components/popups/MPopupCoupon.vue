@@ -17,9 +17,7 @@
             :title="popup.popupData.shop.title"
             loading="lazy"
             class="md:mr-3 h-[59px]"
-            :src="
-              'https://za-halyavoi.ru/api/static/' + popup.popupData.shop.image
-            "
+            :src="popup.popupData.shop.image"
             :alt="popup.popupData.shop.title"
             @click="$router.push(`/to/${popup.popupData.uin}`)"
           />

@@ -7,7 +7,7 @@
 
     <img
       loading="lazy"
-      :src="`https://za-halyavoi.ru/api/static/${shop.image}`"
+      :src="shop.image"
       :alt="seo.title"
     />
 

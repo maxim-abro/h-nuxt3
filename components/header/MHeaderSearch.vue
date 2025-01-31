@@ -12,7 +12,7 @@
         <img
           :title="shop.title"
           loading="lazy"
-          :src="`https://za-halyavoi.ru/api/static/${shop.image}`"
+          :src="shop.image"
           :alt="shop.image"
           class="mr-2 h-10 xl:h-16 w-auto"
         />
