@@ -118,7 +118,7 @@ export default defineNuxtConfig({
     "@nuxtjs/color-mode",
     "nuxt-icons",
     "nuxt-gtag",
-    // "@vite-pwa/nuxt",
+    "@vite-pwa/nuxt",
     // "@nuxt/image",
   ],
 
@@ -131,67 +131,68 @@ export default defineNuxtConfig({
   //   format: ["webp"],
   // },
 
-  // pwa: {
-  //   registerType: "autoUpdate",
-  //   manifest: {
-  //     name: "za halyavoi",
-  //     short_name: "halyava",
-  //     theme_color: "#ffffff",
-  //     icons: [
-  //       {
-  //         src: "icons/icon-72x72.png",
-  //         sizes: "72x72",
-  //         type: "image/png",
-  //       },
-  //       {
-  //         src: "icons/icon-128x128.png",
-  //         sizes: "128x128",
-  //         type: "image/png",
-  //       },
-  //       {
-  //         src: "icons/icon-144x144.png",
-  //         sizes: "144x144",
-  //         type: "image/png",
-  //       },
-  //       {
-  //         src: "icons/icon-152x152.png",
-  //         sizes: "152x152",
-  //         type: "image/png",
-  //       },
-  //       {
-  //         src: "icons/icon-192x192.png",
-  //         sizes: "192x192",
-  //         type: "image/png",
-  //       },
-  //       {
-  //         src: "icons/icon-384x384.png",
-  //         sizes: "384x384",
-  //         type: "image/png",
-  //       },
-  //       {
-  //         src: "icons/icon-512x512.png",
-  //         sizes: "512x512",
-  //         type: "image/png",
-  //       },
-  //     ],
-  //   },
-  //   workbox: {
-  //     navigateFallback: "/",
-  //     globPatterns: ["**/*.{js,css,html,png,svg,ico}"],
-  //   },
-  //   client: {
-  //     installPrompt: true,
-  //     // you don't need to include this: only for testing purposes
-  //     // if enabling periodic sync for update use 1 hour or so (periodicSyncForUpdates: 3600)
-  //     periodicSyncForUpdates: 20,
-  //   },
-  //   devOptions: {
-  //     enabled: true,
-  //     suppressWarnings: true,
-  //     navigateFallbackAllowlist: [/^\/$/],
-  //     type: "module",
-  //   },
-  // },
+  pwa: {
+    registerType: "autoUpdate",
+    manifest: {
+      name: "za halyavoi",
+      short_name: "halyava",
+      theme_color: "#ffffff",
+      lang: 'ru',
+      icons: [
+        {
+          src: "icons/icon-72x72.png",
+          sizes: "72x72",
+          type: "image/png",
+        },
+        {
+          src: "icons/icon-128x128.png",
+          sizes: "128x128",
+          type: "image/png",
+        },
+        {
+          src: "icons/icon-144x144.png",
+          sizes: "144x144",
+          type: "image/png",
+        },
+        {
+          src: "icons/icon-152x152.png",
+          sizes: "152x152",
+          type: "image/png",
+        },
+        {
+          src: "icons/icon-192x192.png",
+          sizes: "192x192",
+          type: "image/png",
+        },
+        {
+          src: "icons/icon-384x384.png",
+          sizes: "384x384",
+          type: "image/png",
+        },
+        {
+          src: "icons/icon-512x512.png",
+          sizes: "512x512",
+          type: "image/png",
+        },
+      ],
+    },
+    workbox: {
+      navigateFallback: "/",
+      globPatterns: ["**/*.{js,css,html,png,svg,ico}"],
+    },
+    client: {
+      installPrompt: true,
+      // you don't need to include this: only for testing purposes
+      // if enabling periodic sync for update use 1 hour or so (periodicSyncForUpdates: 3600)
+      periodicSyncForUpdates: 20,
+    },
+    devOptions: {
+      enabled: true,
+      suppressWarnings: true,
+      navigateFallbackAllowlist: [/^\/$/],
+      type: "module",
+    },
+  },
 
   colorMode: {
     preference: "light",
@@ -199,34 +200,34 @@ export default defineNuxtConfig({
     classSuffix: "",
   },
 
-  // sitemap: {
-  //   urls: async () => {
-  //     const result: any[] = [];
-  //     const [categoryData, shopData, holidayData, blogData] = await Promise.all(
-  //       [
-  //         axios.get("https://za-halyavoi.ru/api/admin/sitemap/category"),
-  //         axios.get("https://za-halyavoi.ru/api/admin/sitemap/shop"),
-  //         axios.get("https://za-halyavoi.ru/api/admin/sitemap/holidays"),
-  //         axios.get("https://za-halyavoi.ru/api/admin/sitemap/blog"),
-  //       ],
-  //     );
-  //     categoryData.data.forEach((i: any) =>
-  //       result.push(`/categories/${i.lat_title}`),
-  //     );
-  //     shopData.data.forEach((i: any) => result.push(`/shop/${i.lat_title}`));
-  //     holidayData.data.forEach((i: any) => result.push(`/tags/${i.lat_title}`));
-  //     blogData.data.forEach((i: any) => result.push(`/blog/${i.lat_title}`));
-  //     return result.map((p) => {
-  //       return {
-  //         loc: p,
-  //         lastmod: new Date(),
-  //         changefreq: "daily",
-  //         priority: 0.8,
-  //       };
-  //     });
-  //   },
-  //   exclude: ["/go", "/search"],
-  // },
+  sitemap: {
+    urls: async () => {
+      const result: any[] = [];
+      const [categoryData, shopData, holidayData, blogData] = await Promise.all(
+        [
+          axios.get("https://za-halyavoi.ru/api/admin/sitemap/category"),
+          axios.get("https://za-halyavoi.ru/api/admin/sitemap/shop"),
+          axios.get("https://za-halyavoi.ru/api/admin/sitemap/holidays"),
+          axios.get("https://za-halyavoi.ru/api/admin/sitemap/blog"),
+        ],
+      );
+      categoryData.data.forEach((i: any) =>
+        result.push(`/categories/${i.lat_title}`),
+      );
+      shopData.data.forEach((i: any) => result.push(`/shop/${i.lat_title}`));
+      holidayData.data.forEach((i: any) => result.push(`/tags/${i.lat_title}`));
+      blogData.data.forEach((i: any) => result.push(`/blog/${i.lat_title}`));
+      return result.map((p) => {
+        return {
+          loc: p,
+          lastmod: new Date(),
+          changefreq: "daily",
+          priority: 0.8,
+        };
+      });
+    },
+    exclude: ["/go", "/search"],
+  },
 
   tailwindcss: {
     cssPath: "~/assets/tailwind.css",
